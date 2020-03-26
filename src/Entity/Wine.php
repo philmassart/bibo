@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WineRepository")
@@ -41,6 +42,7 @@ class Wine
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=1900, max=2050)
      */
     private $year;
 

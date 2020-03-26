@@ -24,7 +24,7 @@
             <tbody>
             {% for wine in wines %}
             <tr>
-                <td>{{ wine.name }}</td>
+                <td>{{ wine.name }} {{ wine.year }}</td>
                 <td>
                     <a href="{{path ('admin.wine.edit', {id: wine.id}) }}" class="btn btn-secondary">Editer</a>
                     <form method="post" action="{{ path('admin.wine.delete', {id: wine.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title wine.name %}
+
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+                <h1>{{ wine.name }} {{ wine.year }}</h1>
+                <h2>{{ wine.appellation }}</h2>
+                <div class="text-primary" style="font-size: 4rem; font-weight:bold;" >{{ wine.formattedPrice }}</div>
+                <a href="#" class="btn btn-primary">Contacter???</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <div class="container mt-4">
+
+        <p>
+            {{ wine.description | nl2br }}
+        </p>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Caractéristiques</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Nombre (pas encore implémenté)</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Producteur (pas encore implémenté</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Contenance</td>
+                        <td>{{ wine.content }} cl</td>
+                    </tr>
+                    <tr>
+                        <td>???? (pas encore implémenté</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Couleur</td>
+                        <td>{{ wine.ColorType }}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h2>Spécificités</h2>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

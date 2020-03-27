@@ -23,15 +23,14 @@ class WineRepository extends ServiceEntityRepository
 
 
     /**
-     * @return Wine[]
+     * @return Query[]
      */
-    public function findAllVisible(): array
+    public function findAllVisible(): Query
     {
 
         return $this->findVisibleQuery()
-            ->getQuery()
-            ->getResult();
-        
+            ->getQuery();
+
     }
 
     /**

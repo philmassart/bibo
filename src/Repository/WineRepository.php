@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Wine;
+use App\Entity\WineSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -23,13 +25,26 @@ class WineRepository extends ServiceEntityRepository
 
 
     /**
-     * @return Query[]
+     * @return Query
      */
-    public function findAllVisible(): Query
+    public function findAllVisibleQuery(WineSearch $search): Query
     {
 
-        return $this->findVisibleQuery()
-            ->getQuery();
+        $query = $this->findVisibleQuery();
+
+        if ($search->getMaxPrice()) {
+            $query = $query
+                ->andWhere('w.price <= :maxprice')
+                ->setParameter('maxprice', $search->getMaxPrice());
+        }
+
+        if ($search->getMinYear()) {
+            $query = $query
+                ->andWhere('w.year >= :minyear')
+                ->setParameter('minyear', $search->getMinYear());
+        }
+
+            return $query->getQuery();
 
     }
 

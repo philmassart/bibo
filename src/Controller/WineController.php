@@ -2,13 +2,15 @@
 namespace App\Controller;
 
 use App\Entity\Wine;
+use App\Entity\WineSearch;
+use App\Form\WineSearchType;
 use App\Repository\WineRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginationInterface;
 
 class WineController extends AbstractController
 {
@@ -28,15 +30,22 @@ class WineController extends AbstractController
      * @Route("/vins", name="wine.index")
      * @return Response
      */
-    public function index(Paginator $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $wines = $paginator->paginate($this->repository->findAllVisibleQuery(),
-        $request->query->getInt('page', 1),
+        $search = new WineSearch();
+        $form = $this->createForm(WineSearchType::class, $search);
+        $form->handleRequest($request);
+
+
+        $wines = $paginator->paginate(
+            $this->repository ->findAllVisibleQuery($search),
+            $request->query->getInt('page', 1),
         12
       );
         return $this->render('wine/index.html.twig', [
             'current_menu' => 'wines',
-            'wines' => $wines
+            'wines' => $wines,
+            'form' => $form->createView()
         ]);
     }
 

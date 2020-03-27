@@ -22,6 +22,7 @@ class WineType extends AbstractType
                 'choices' => $this->getChoices()
             ])
             ->add('country')
+            ->add('region')
             ->add('stock')
             ->add('price')
         ;

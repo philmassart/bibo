@@ -2,9 +2,16 @@
 
 {% block title 'Tous les vins'%}
 
-
 {% block body %}
-    <div class="container">
+  <div class="container mt-4">
         <h1>Voir tous les vins</h1>
-    </div>
+
+        <div class="row">
+          {% for wine in wines %}
+          <div class="col-md-4">
+            {% include 'wine/_wine.html.twig' %}
+          </div>
+        {% endfor %}
+        </div>
+  </div>
 {% endblock %}

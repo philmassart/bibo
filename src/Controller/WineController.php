@@ -28,8 +28,10 @@ class WineController extends AbstractController
      */
     public function index(): Response
     {
+        $wines = $this->repository->findAllVisible();
         return $this->render('wine/index.html.twig', [
-            'current_menu' => 'wines'
+            'current_menu' => 'wines',
+            'wines' => $wines
         ]);
     }
 

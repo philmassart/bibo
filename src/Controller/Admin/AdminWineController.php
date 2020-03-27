@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Admin;
 
+use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Form\WineType;
 use App\Repository\WineRepository;
@@ -69,6 +70,10 @@ class AdminWineController extends AbstractController
      */
     public function edit(Wine $wine, Request $request)
     {
+        //  $grape = new Grape();
+        // $wine->addGrape($grape);
+
+
         $form = $this->createForm(WineType::class, $wine);
         $form->handleRequest($request);
 

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -81,9 +83,15 @@ class Wine
      */
     private $region;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Grape", inversedBy="wines")
+     */
+    private $grapes;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
+        $this->grapes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,6 +242,34 @@ class Wine
     public function setRegion(string $region): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Grape[]
+     */
+    public function getGrapes(): Collection
+    {
+        return $this->grapes;
+    }
+
+    public function addGrape(Grape $grape): self
+    {
+        if (!$this->grapes->contains($grape)) {
+            $this->grapes[] = $grape;
+            $grape->addWine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGrape(Grape $grape): self
+    {
+        if ($this->grapes->contains($grape)) {
+            $this->grapes->removeElement($grape);
+            $grape->removeWine($this);
+        }
 
         return $this;
     }

@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Grape;
 use App\Entity\Wine;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +22,11 @@ class WineType extends AbstractType
             ->add('content')
             ->add('color', ChoiceType::class,[
                 'choices' => $this->getChoices()
+            ])
+            ->add('grapes', EntityType::class, [
+                'class' => Grape::class,
+                'choice_label' => 'name',
+                'multiple' => true
             ])
             ->add('country')
             ->add('region')

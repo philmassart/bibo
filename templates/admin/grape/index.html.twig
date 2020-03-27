@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les vins'%}
+
+{% block body %}
+    <div class="container mt-4">
+
+        <h1>Gérer les cépages</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom du cépage</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for grape in grapes %}
+            <tr>
+                <td>{{ grape.name }} </td>
+                <td>
+                    <a href="{{path ('admin.grape.edit', {id: grape.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form method="post" action="{{ path('admin.grape.delete', {id: grape.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ grape.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="div text-right">
+            <a href="{{ path('admin.grape.new') }}" class="btn btn-primary">Créer un nouveau cépage</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}

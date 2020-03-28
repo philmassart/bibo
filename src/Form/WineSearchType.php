@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Grape;
 use App\Entity\WineSearch;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +29,13 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Budget max'
                 ]
+            ])
+            ->add('grapes', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'class' => Grape::class,
+                'choice_label' => 'name',
+                'multiple' => true
             ])
         ;
     }

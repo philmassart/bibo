@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class WineSearch {
@@ -15,6 +16,16 @@ class WineSearch {
      * @Assert\Range(min=1950, max=2050)
      */
     private $minYear;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $grapes;
+
+    public function __construct()
+    {
+        $this->grapes = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -49,6 +60,24 @@ class WineSearch {
     public function setMinYear(int $minYear): WineSearch
     {
         $this->minYear = $minYear;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGrapes(): ArrayCollection
+    {
+        return $this->grapes;
+    }
+
+    /**
+     * @param ArrayCollection $grapes
+     * @return WineSearch
+     */
+    public function setGrapes(ArrayCollection $grapes): WineSearch
+    {
+        $this->grapes = $grapes;
         return $this;
     }
 

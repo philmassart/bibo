@@ -44,6 +44,16 @@ class WineRepository extends ServiceEntityRepository
                 ->setParameter('minyear', $search->getMinYear());
         }
 
+        if ($search->getGrapes()->count() > 0) {
+            $k = 0;
+            foreach($search->getGrapes() as $grape) {
+                $k++;
+                $query = $query
+                    ->andWhere(":grape$k MEMBER OF w.grapes")
+                    ->setParameter("grape$k", $grape);
+            }
+        }
+
             return $query->getQuery();
 
     }

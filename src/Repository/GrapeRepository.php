@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Grape;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Grape|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,26 @@ class GrapeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Grape::class);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function myFindAll()
+    {
+        return $this->myFindAllBuilder()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function myFindAllBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('g')
+            ->select('g')
+            ->orderBy('g.name', 'ASC');
     }
 
     // /**

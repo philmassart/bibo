@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 class WineController extends AbstractController
 {
@@ -33,9 +35,8 @@ class WineController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $search = new WineSearch();
-        $form = $this->createForm(WineSearchType::class, $search);
-        $form->handleRequest($request);
-
+        $form = $this->createForm(WineSearchType::class, $search)
+            ->handleRequest($request);
 
         $wines = $paginator->paginate(
             $this->repository ->findAllVisibleQuery($search),
@@ -53,6 +54,16 @@ class WineController extends AbstractController
      * @Route("/vins/{slug}-{id}", name="wine.show", requirements={"slug": "[a-z0-9\-]*" })
      * @param Wine $wine
      * @return Response
+     *
+     * @ParamConverter(
+     *     "wine",
+     *     class="App\Entity\Wine",
+     *     options={
+     *         "repository_method" = "findOneById",
+     *         "mapping": {"id": "id"},
+     *         "map_method_signature" = true
+     *     }
+     * )
      */
     public function show(Wine $wine, string $slug): Response
     {
@@ -62,9 +73,12 @@ class WineController extends AbstractController
                 'slug' => $wine->getSlug()
             ], 301);
         }
+
+
+
         return $this->render('wine/show.html.twig', [
             'wine' => $wine,
-        'current_menu' => 'wines'
-    ]);
+            'current_menu' => 'wines'
+        ]);
     }
 }

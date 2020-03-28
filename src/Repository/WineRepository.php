@@ -6,6 +6,8 @@ use App\Entity\Wine;
 use App\Entity\WineSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 
@@ -22,7 +24,23 @@ class WineRepository extends ServiceEntityRepository
         parent::__construct($registry, Wine::class);
     }
 
-
+    /**
+     * @param int $id
+     * @return mixed
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id)
+    {
+        return $this->createQueryBuilder('w')
+            ->select(['w', 'g'])
+            ->leftJoin('w.grapes', 'g')
+            ->orderBy('g.name', 'ASC')
+            ->where('w.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     /**
      * @return Query

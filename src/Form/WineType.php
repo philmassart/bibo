@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Grape;
 use App\Entity\Wine;
+use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,7 +29,11 @@ class WineType extends AbstractType
                 'class' => Grape::class,
                 'required' => false,
                 'choice_label' => 'name',
-                'multiple' => true
+                'multiple' => true,
+                'query_builder' => function(GrapeRepository $grapeRepository)
+                {
+                    return $grapeRepository->myFindAllBuilder();
+                }
             ])
             ->add('country')
             ->add('region')

@@ -21,7 +21,7 @@ class AdminGrapeController extends AbstractController
     public function index(GrapeRepository $grapeRepository): Response
     {
         return $this->render('admin/grape/index.html.twig', [
-            'grapes' => $grapeRepository->findAll(),
+            'grapes' => $grapeRepository->myFindAll(),
         ]);
     }
 

@@ -36,7 +36,6 @@ class WineType extends AbstractType
                 }
             ])
             ->add('country')
-            ->add('region')
             ->add('stock')
             ->add('price')
             ->add('imageFile', FileType::class, [

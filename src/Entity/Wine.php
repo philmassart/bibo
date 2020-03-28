@@ -98,10 +98,6 @@ class Wine
      */
     private $created_at;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $region;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Grape", inversedBy="wines")
@@ -259,17 +255,6 @@ class Wine
         return $this;
     }
 
-    public function getRegion(): ?string
-    {
-        return $this->region;
-    }
-
-    public function setRegion(string $region): self
-    {
-        $this->region = $region;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Grape[]

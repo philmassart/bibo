@@ -17,3 +17,7 @@
 
 ###local apache sur le portable
 /public/.htaccess
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

@@ -1,4 +1,9 @@
 <div class="card mb-4">
+  {% if wine.filename %}
+    <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height: auto">
+  {% else %}
+    <img src="{{ '/images/wines/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height: auto">
+  {% endif %}
   <div class="card-body">
   <h5 class="card-title">
   <a href="{{ path('wine.show', {slug: wine.slug, id: wine.id}) }}">

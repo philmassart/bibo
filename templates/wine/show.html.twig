@@ -8,6 +8,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                {% if wine.filename %}
+                    <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
+                {% else %}
+                    <img src="{{ '/images/wines/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
+                {% endif %}
             </div>
             <div class="col-md-4">
                 <h1>{{ wine.name }} {{ wine.year }}</h1>
@@ -53,7 +58,12 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <h2>Spécificités</h2>
+                <h2>Cépages</h2>
+                <ul class="list-group">
+                    {% for grape in wine.grapes %}
+                    <li class="list-group-item">{{ grape.name }}</li>
+                    {% endfor %}
+                </ul>
 
 
             </div>

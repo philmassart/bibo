@@ -1,14 +1,12 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Form\WineType;
 use App\Repository\WineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminWineController extends AbstractController
@@ -70,9 +68,6 @@ class AdminWineController extends AbstractController
      */
     public function edit(Wine $wine, Request $request)
     {
-        //  $grape = new Grape();
-        // $wine->addGrape($grape);
-
 
         $form = $this->createForm(WineType::class, $wine);
         $form->handleRequest($request);
@@ -81,7 +76,6 @@ class AdminWineController extends AbstractController
             $this->em->flush();
             $this->addFlash('success', 'Modifié avec succès');
             return $this->redirectToRoute('admin.wine.index');
-
         }
 
         return $this->render('admin/wine/edit.html.twig', [

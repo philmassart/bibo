@@ -7,6 +7,7 @@ use App\Entity\Wine;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,6 +26,7 @@ class WineType extends AbstractType
             ])
             ->add('grapes', EntityType::class, [
                 'class' => Grape::class,
+                'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true
             ])
@@ -32,6 +34,9 @@ class WineType extends AbstractType
             ->add('region')
             ->add('stock')
             ->add('price')
+            ->add('imageFile', FileType::class, [
+                'required' => false
+            ])
         ;
     }
 

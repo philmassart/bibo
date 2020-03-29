@@ -22,10 +22,17 @@ class WineSearch {
      */
     private $grapes;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $appellations;
+
 
     public function __construct()
     {
         $this->grapes = new ArrayCollection();
+        $this->appellations = new ArrayCollection();
+
 
     }
 
@@ -82,6 +89,24 @@ class WineSearch {
     public function setGrapes(ArrayCollection $grapes): WineSearch
     {
         $this->grapes = $grapes;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAppellations(): ArrayCollection
+    {
+        return $this->appellations;
+    }
+
+    /**
+     * @param ArrayCollection $appellations
+     * @return WineSearch
+     */
+    public function setAppellations(ArrayCollection $appellations): WineSearch
+    {
+        $this->appellations = $appellations;
         return $this;
     }
 

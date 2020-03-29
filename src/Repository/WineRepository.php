@@ -72,6 +72,7 @@ class WineRepository extends ServiceEntityRepository
             }
         }
 
+
             return $query->getQuery();
 
     }

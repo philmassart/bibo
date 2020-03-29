@@ -20,6 +20,8 @@ class GrapeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Grape::class,
+            'translation_domain' => 'forms'
+
         ]);
     }
 }

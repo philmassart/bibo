@@ -69,6 +69,7 @@ class Wine
      */
     private $content;
 
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -109,6 +110,11 @@ class Wine
      * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines")
      */
     private $appellation;
+
+    /**
+     * @ORM\Column(type="decimal", precision=3, scale=1, nullable=true)
+     */
+    private $alcohol;
 
     public function __construct()
     {
@@ -334,6 +340,18 @@ class Wine
     public function setAppellation(?Appellation $appellation): self
     {
         $this->appellation = $appellation;
+
+        return $this;
+    }
+
+    public function getAlcohol(): ?string
+    {
+        return $this->alcohol;
+    }
+
+    public function setAlcohol(?string $alcohol): self
+    {
+        $this->alcohol = $alcohol;
 
         return $this;
     }

@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Appellation;
 use App\Entity\Grape;
 use App\Entity\WineSearch;
+use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -23,7 +23,6 @@ class WineSearchType extends AbstractType
                     'placeholder' => 'Année minimale'
                 ]
             ])
-
             ->add('maxPrice', IntegerType::class, [
                 'required' => false,
                 'label' => false,
@@ -36,9 +35,13 @@ class WineSearchType extends AbstractType
                 'label' => false,
                 'class' => Grape::class,
                 'choice_label' => 'name',
-                'multiple' => true
-            ])
-        ;
+                'multiple' => true,
+                'query_builder' => function (GrapeRepository $grapeRepository) {
+                    return $grapeRepository->myFindAllBuilder();
+                }
+
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

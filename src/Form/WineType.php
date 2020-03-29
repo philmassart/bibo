@@ -23,6 +23,7 @@ class WineType extends AbstractType
             ->add('description')
             ->add('year')
             ->add('content')
+            ->add('alcohol')
             ->add('color', ChoiceType::class,[
                 'choices' => $this->getChoices()
             ])

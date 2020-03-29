@@ -20,6 +20,8 @@ class AppellationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Appellation::class,
+            'translation_domain' => 'forms'
+
         ]);
     }
 }

@@ -37,7 +37,7 @@ class Region
     private $country;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Appellation", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="App\Entity\Appellation", mappedBy="region", cascade={"persist"})
      */
     private $appellations;
 

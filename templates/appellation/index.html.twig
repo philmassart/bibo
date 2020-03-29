@@ -24,7 +24,8 @@
             <tbody>
             {% for appellation in appellations %}
             <tr>
-                <td>{{ appellation.name }} </td>
+                <td>{{ appellation.name }}
+                </td>
                 <td>
                     <a href="{{path ('appellation.edit', {id: appellation.id}) }}" class="btn btn-secondary">Editer</a>
                     <form method="post" action="{{ path('appellation.delete', {id: appellation.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">

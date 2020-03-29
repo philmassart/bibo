@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Region;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Region|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +20,26 @@ class RegionRepository extends ServiceEntityRepository
         parent::__construct($registry, Region::class);
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function myFindAllRegion()
+    {
+        return $this->myFindAllRegionBuilder()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function myFindAllRegionBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->orderBy('r.name', 'ASC');
+    }
     // /**
     //  * @return Region[] Returns an array of Region objects
     //  */

@@ -57,10 +57,6 @@ class Wine
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $appellation;
 
     /**
      * @ORM\Column(type="integer")
@@ -149,17 +145,6 @@ class Wine
         return $this;
     }
 
-    public function getAppellation(): ?string
-    {
-        return $this->appellation;
-    }
-
-    public function setAppellation(string $appellation): self
-    {
-        $this->appellation = $appellation;
-
-        return $this;
-    }
 
     public function getYear(): ?int
     {

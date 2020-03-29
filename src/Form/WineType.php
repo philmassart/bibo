@@ -19,7 +19,6 @@ class WineType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('appellation')
             ->add('year')
             ->add('content')
             ->add('color', ChoiceType::class,[

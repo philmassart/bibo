@@ -30,6 +30,11 @@ class Appellation
      */
     private $wines;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="appellations")
+     */
+    private $region;
+
     public function __construct()
     {
         $this->wines = new ArrayCollection();
@@ -79,6 +84,18 @@ class Appellation
                 $wine->setAppellation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRegion(): ?Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }

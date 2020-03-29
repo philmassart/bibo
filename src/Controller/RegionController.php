@@ -21,7 +21,7 @@ class RegionController extends AbstractController
     public function index(RegionRepository $regionRepository): Response
     {
         return $this->render('region/index.html.twig', [
-            'regions' => $regionRepository->findAll(),
+            'regions' => $regionRepository->myFindAllRegion(),
         ]);
     }
 

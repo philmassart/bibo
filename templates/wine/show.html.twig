@@ -63,11 +63,10 @@
                     {% for grape in wine.grapes %}
                         <li class="list-group-item">{{ grape.name }}</li>
                     {% endfor %}
-                    <h2>Appellation</h2>
-                    {% for appellations in wine.appellation %}
-                    {{ wine.appellation_id }}
-                    {% endfor %}
-
+                </ul>
+                <h2>Appellation</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">{{ wine.appellation.name }}</li>
                 </ul>
 
             </div>

@@ -106,7 +106,7 @@ class Wine
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines")
      */
     private $appellation;
 

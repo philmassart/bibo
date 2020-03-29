@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Appellation;
 use App\Entity\Grape;
 use App\Entity\WineSearch;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

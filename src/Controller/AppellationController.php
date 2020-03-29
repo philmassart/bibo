@@ -21,7 +21,7 @@ class AppellationController extends AbstractController
     public function index(AppellationRepository $appellationRepository): Response
     {
         return $this->render('appellation/index.html.twig', [
-            'appellations' => $appellationRepository->findAll(),
+            'appellations' => $appellationRepository->myFindAllAppel(),
         ]);
     }
 

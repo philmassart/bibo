@@ -22,10 +22,14 @@ class WineSearch {
      */
     private $grapes;
 
+
     public function __construct()
     {
         $this->grapes = new ArrayCollection();
+
     }
+
+
 
     /**
      * @return int|null
@@ -80,7 +84,6 @@ class WineSearch {
         $this->grapes = $grapes;
         return $this;
     }
-
 
 
 }

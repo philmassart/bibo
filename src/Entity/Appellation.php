@@ -26,6 +26,7 @@ class Appellation
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Wine", mappedBy="appellation", cascade={"persist"})
+     * @ORM\OrderBy({"name" = "ASC"})
      * @ORM\JoinTable(name="Wine", joinColumns={@JoinColumn(name="appellation_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="wine_id", referencedColumnName="id")})
      */

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Gérer les vins'%}
+{% block title 'Gérer les appellations'%}
 
 {% block body %}
     <div class="container mt-4">
 
-        <h1>Gérer les cépages</h1>
+        <h1>Gérer les appellations</h1>
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
@@ -17,19 +17,19 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Nom du cépage</th>
+                <th>Nom</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            {% for grape in grapes %}
+            {% for appellation in appellations %}
             <tr>
-                <td>{{ grape.name }} </td>
+                <td>{{ appellation.name }} </td>
                 <td>
-                    <a href="{{path ('admin.grape.edit', {id: grape.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path('admin.grape.delete', {id: grape.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                    <a href="{{path ('appellation.edit', {id: appellation.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form method="post" action="{{ path('appellation.delete', {id: appellation.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
                         <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ grape.id) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ appellation.id) }}">
                         <button class="btn btn-danger">Supprimer</button>
                     </form>
                 </td>
@@ -39,7 +39,7 @@
         </table>
 
         <div class="div text-right">
-            <a href="{{ path('admin.grape.new') }}" class="btn btn-primary">Créer un nouveau cépage</a>
+            <a href="{{ path('appellation.new') }}" class="btn btn-primary">Créer une nouvelle appellation</a>
         </div>
     </div>
 

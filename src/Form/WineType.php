@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Appellation;
 use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,6 +35,12 @@ class WineType extends AbstractType
                 {
                     return $grapeRepository->myFindAllBuilder();
                 }
+            ])
+            ->add('appellation', EntityType::class, [
+                'class' => Appellation::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => false,
             ])
             ->add('country')
             ->add('stock')

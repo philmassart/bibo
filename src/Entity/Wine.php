@@ -105,10 +105,16 @@ class Wine
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines", cascade={"persist"})
+     */
+    private $appellation;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
+        $this->appellation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -316,6 +322,18 @@ class Wine
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getAppellation(): ?Appellation
+    {
+        return $this->appellation;
+    }
+
+    public function setAppellation(?Appellation $appellation): self
+    {
+        $this->appellation = $appellation;
 
         return $this;
     }

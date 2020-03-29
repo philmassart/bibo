@@ -16,7 +16,6 @@
             </div>
             <div class="col-md-4">
                 <h1>{{ wine.name }} {{ wine.year }}</h1>
-                <h2>{{ wine.appellation }}</h2>
                 <div class="text-primary" style="font-size: 4rem; font-weight:bold;" >{{ wine.formattedPrice }}</div>
                 <a href="#" class="btn btn-primary">Contacter???</a>
             </div>
@@ -47,7 +46,7 @@
                         <td>{{ wine.content }} cl</td>
                     </tr>
                     <tr>
-                        <td>Appellation (pas encore implémenté</td>
+                        <td>Appellation (pas encore implémenté)</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -57,16 +56,24 @@
 
                 </table>
             </div>
+
             <div class="col-md-4">
                 <h2>Cépages</h2>
                 <ul class="list-group">
                     {% for grape in wine.grapes %}
-                    <li class="list-group-item">{{ grape.name }}</li>
+                        <li class="list-group-item">{{ grape.name }}</li>
                     {% endfor %}
+                    <h2>Appellation</h2>
+                    {% for appellation in wine.appellation %}
+                    {{ wine.appellation }}
+                    {% endfor %}
+
                 </ul>
 
-
             </div>
+
+
+
         </div>
     </div>
 {% endblock %}

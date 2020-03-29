@@ -19,12 +19,10 @@ class WineFixture extends Fixture
             ->setDescription($faker->sentences(3, true))
             ->setContent($faker->numberBetween(37, 300))
             ->setPrice($faker->numberBetween(5,50))
-            ->setAppellation($faker->words(1, true))
             ->setColor($faker->numberBetween(1, count(Wine::COLOR) - 1))
             ->setCountry($faker->country)
             ->setYear($faker->numberBetween(1990, 2020))
-            ->setStock(false)
-            ->setRegion($faker->words(1, true));
+            ->setStock(false);
           $manager->persist($wine);
         }
         // $product = new Product();

@@ -19,26 +19,14 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th >Actions</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <h3>France</h3>
             {% for region in regions  %}
                 {% if region.country == 1 %}
-            <tr>
-                <td>{{ region.name }} </td>
-                <td>
-                    <div class="div text-right">
-                    <a href="{{path ('region.edit', {id: region.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path('region.delete', {id: region.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ region.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
-                    </form>
-                    </div>
-                </td>
-            </tr>
+                    {{ include ('region/_list.html.twig') }}
                 {% endif %}
             {% endfor %}
             </tbody>
@@ -50,19 +38,7 @@
             <h3>Italie</h3>
             {% for region in regions  %}
                 {% if region.country == 2 %}
-                    <tr>
-                        <td>{{ region.name }} </td>
-                        <td>
-                            <div class="div text-right">
-                            <a href="{{path ('region.edit', {id: region.id}) }}" class="btn btn-secondary">Editer</a>
-                            <form method="post" action="{{ path('region.delete', {id: region.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ region.id) }}">
-                                <button class="btn btn-danger">Supprimer</button>
-                            </form>
-                            </div>
-                        </td>
-                    </tr>
+                    {{ include ('region/_list.html.twig') }}
                 {% endif %}
             {% endfor %}
             </tbody>
@@ -74,19 +50,7 @@
             <h3>Espagne</h3>
             {% for region in regions  %}
                 {% if region.country == 3 %}
-                    <tr>
-                        <td>{{ region.name }} </td>
-                        <td>
-                            <div class="div text-right">
-                            <a href="{{path ('region.edit', {id: region.id}) }}" class="btn btn-secondary">Editer</a>
-                            <form method="post" action="{{ path('region.delete', {id: region.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ region.id) }}">
-                                <button class="btn btn-danger">Supprimer</button>
-                            </form>
-                            </div>
-                        </td>
-                    </tr>
+                    {{ include ('region/_list.html.twig') }}
                 {% endif %}
             {% endfor %}
             </tbody>

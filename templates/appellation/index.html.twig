@@ -11,8 +11,11 @@
             <div class="alert alert-success">
                 {{ message }}
             </div>
-
         {% endfor %}
+
+        <div class="div text-right">
+            <a href="{{ path('appellation.new') }}" class="btn btn-primary">Créer une nouvelle appellation</a>
+        </div>
 
         <table class="table table-striped">
             <thead>
@@ -22,26 +25,281 @@
             </tr>
             </thead>
             <tbody>
+            <h2><a href="#France">France</a> - <a href="#Italie">Italie</a> - <a href="#Espagne">Espagne</a></h2>
+            <h3>Alsace</h3>
             {% for appellation in appellations %}
-            <tr>
-                <td>{{ appellation.name }}
-                </td>
-                <td>
-                    <a href="{{path ('appellation.edit', {id: appellation.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path('appellation.delete', {id: appellation.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ appellation.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
+                {% if appellation.region.name == 'Alsace' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>
 
-        <div class="div text-right">
-            <a href="{{ path('appellation.new') }}" class="btn btn-primary">Créer une nouvelle appellation</a>
-        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Beaujolais</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Beaujolais' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Bordeaux</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Bordeaux' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Bourgogne</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Bourgogne' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Champagne</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Champagne' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Jura</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Jura' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Languedoc-Roussilon</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Languedoc-Roussilon' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Loire</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Loire' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Provence-Corse</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Provence-Corse' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Rhône</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Rhône' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Savoie</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Savoie' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Sud-Ouest</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Sud-Ouest' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div id="Italie"><h2>Italie</h2></div>
+            <h3>Toscane</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Toscane' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div id="Espagne"><h2>Espagne</h2></div>
+            <h3>Andalousie</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Adalousie' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Aragon</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Aragon' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <h3>Catalogne</h3>
+            {% for appellation in appellations %}
+                {% if appellation.region.name == 'Catalogne' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
     </div>
 
 

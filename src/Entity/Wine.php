@@ -75,10 +75,6 @@ class Wine
      */
     private $color;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $country;
 
     /**
      * @ORM\Column(type="boolean", options={"default": true})
@@ -199,17 +195,6 @@ class Wine
         return self::COLOR[$this->color];
     }
 
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
 
     public function getStock(): ?bool
     {

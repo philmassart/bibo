@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Region;
+use App\Entity\RegionSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
@@ -40,6 +41,11 @@ class RegionRepository extends ServiceEntityRepository
             ->select('r')
             ->orderBy('r.name', 'ASC');
     }
+
+
+
+
+
     // /**
     //  * @return Region[] Returns an array of Region objects
     //  */

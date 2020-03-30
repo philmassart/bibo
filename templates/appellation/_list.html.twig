@@ -1,0 +1,13 @@
+<tr>
+    <td >{{ appellation.name }} </td>
+    <td width="50%">
+        <div >
+            <a href="{{path ('appellation.edit', {id: appellation.id}) }}" class="btn btn-secondary">Editer</a>
+            <form method="post" action="{{ path('appellation.delete', {id: appellation.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ appellation.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </td>
+</tr>

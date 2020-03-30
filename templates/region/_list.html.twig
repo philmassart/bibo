@@ -1,0 +1,13 @@
+<tr>
+    <td >{{ region.name }} </td>
+    <td width="50%">
+        <div >
+            <a href="{{path ('region.edit', {id: region.id}) }}" class="btn btn-secondary">Editer</a>
+            <form method="post" action="{{ path('region.delete', {id: region.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ region.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </td>
+</tr>

@@ -47,7 +47,6 @@ class WineType extends AbstractType
                     return $appellationRepository->myFindAllAppelBuilder();
                 }
             ])
-            ->add('country')
             ->add('stock')
             ->add('price')
             ->add('imageFile', FileType::class, [

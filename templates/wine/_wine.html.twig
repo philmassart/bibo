@@ -10,7 +10,7 @@
     {{ wine.name }}
   </a>
   </h5>
-  <p class="card-text">Appellation? {{ wine.year}}</p>
+  <p class="card-text">{{ wine.appellation.name }} {{ wine.year}}</p>
   <div class="text-primary" style="font-size:2rem; font-weight: bold;">
   {{ wine.formattedPrice }} €
 </div>

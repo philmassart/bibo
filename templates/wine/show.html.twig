@@ -4,19 +4,21 @@
 
 
 {% block body %}
+
 <div class="jumbotron">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 {% if wine.filename %}
                     <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
                 {% else %}
                     <img src="{{ '/images/wines/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
                 {% endif %}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <h1>{{ wine.name }} {{ wine.year }}</h1>
-                <div class="text-primary" style="font-size: 4rem; font-weight:bold;" >{{ wine.formattedPrice }}</div>
+                <h2>{{ wine.appellation.name }}</h2>
+                {# <div class="text-primary" style="font-size: 4rem; font-weight:bold;" >{{ wine.formattedPrice }}</div> #}
                 {# <a href="#" class="btn btn-primary">Contacter???</a>} #}
             </div>
         </div>
@@ -33,22 +35,9 @@
             <div class="col-md-8">
                 <h2>Caractéristiques</h2>
                 <table class="table table-striped">
-                    <tr>
-                        <td>Nombre (pas encore implémenté)</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Producteur (pas encore implémenté</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Contenance</td>
-                        <td>{{ wine.content }} cl</td>
-                    </tr>
-                    <tr>
-                        <td>Alcool</td>
-                        <td> {{ wine.alcohol }} %</td>
-                    </tr>
+
+
+
                     <tr>
                         <td>Appellation</td>
                         <td>{{ wine.appellation.name }}</td>
@@ -57,7 +46,21 @@
                         <td>Couleur</td>
                         <td>{{ wine.ColorType }}</td>
                     </tr>
-
+                    <tr>
+                        <td>Alcool</td>
+                        <td> {{ wine.alcohol|number_format(1, ',', ' ')  }} %</td>
+                    </tr>
+                    <tr>
+                        <td>Contenance</td>
+                        <td>{{ wine.container.name }} ({{ wine.container.capacity|number_format(1, ',', ' ') }} {{ wine.container.unit }})</td>
+                    </tr>                   <tr>
+                        <td>Nombre (pas encore implémenté)</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Producteur (pas encore implémenté</td>
+                        <td></td>
+                    </tr>
                 </table>
             </div>
 

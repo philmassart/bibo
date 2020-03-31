@@ -64,11 +64,6 @@ class Wine
      */
     private $year;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $content;
-
 
     /**
      * @ORM\Column(type="integer")
@@ -112,11 +107,16 @@ class Wine
      */
     private $alcohol;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Container", inversedBy="wines")
+     */
+    private $container;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
-        $this->appellation = new ArrayCollection();
+//        $this->appellation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,17 +166,6 @@ class Wine
         return $this;
     }
 
-    public function getContent(): ?int
-    {
-        return $this->content;
-    }
-
-    public function setContent(int $content): self
-    {
-        $this->content = $content;
-
-        return $this;
-    }
 
     public function getColor(): ?int
     {
@@ -337,6 +326,18 @@ class Wine
     public function setAlcohol(?string $alcohol): self
     {
         $this->alcohol = $alcohol;
+
+        return $this;
+    }
+
+    public function getContainer(): ?Container
+    {
+        return $this->container;
+    }
+
+    public function setContainer(?Container $container): self
+    {
+        $this->container = $container;
 
         return $this;
     }

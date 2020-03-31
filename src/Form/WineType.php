@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Appellation;
+use App\Entity\Container;
 use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Repository\AppellationRepository;
+use App\Repository\ContainerRepository;
 use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -22,7 +24,6 @@ class WineType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('year')
-            ->add('content')
             ->add('alcohol')
             ->add('color', ChoiceType::class,[
                 'choices' => $this->getChoices()
@@ -47,6 +48,16 @@ class WineType extends AbstractType
                     return $appellationRepository->myFindAllAppelBuilder();
                 }
             ])
+            ->add('container', EntityType::class, [
+                'class' => Container::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => false,
+                'query_builder' => function(ContainerRepository $containerRepository)
+                {
+                    return $containerRepository->myFindAllContainerBuilder();
+                }
+            ])
             ->add('stock')
             ->add('price')
             ->add('imageFile', FileType::class, [
@@ -54,6 +65,8 @@ class WineType extends AbstractType
             ])
         ;
     }
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

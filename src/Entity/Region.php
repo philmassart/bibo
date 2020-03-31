@@ -18,7 +18,6 @@ class Region
     ];
 
 
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

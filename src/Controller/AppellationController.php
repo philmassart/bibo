@@ -83,7 +83,7 @@ class AppellationController extends AbstractController
      */
     public function delete(Request $request, Appellation $appellation): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$appellation->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $appellation->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($appellation);
             $entityManager->flush();

@@ -14,18 +14,19 @@ class RegionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('country', ChoiceType::class,[
-                'choices' => $this->getChoices()
+            ->add('name', null, [
+                'label' => "form.name"
             ])
-        ;
+            ->add('country', ChoiceType::class, [
+                'label' => "form.country",
+                'choices' => $this->getChoices()
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Region::class,
-            'translation_domain' => 'forms'
 
         ]);
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Listener;
 
 use App\Entity\Wine;
@@ -10,7 +11,8 @@ use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
-class ImageCacheSubscriber implements EventSubscriber {
+class ImageCacheSubscriber implements EventSubscriber
+{
 
     /**
      * @var CacheManager

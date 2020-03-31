@@ -64,7 +64,7 @@ class WineRepository extends ServiceEntityRepository
 
         if ($search->getGrapes()->count() > 0) {
             $k = 0;
-            foreach($search->getGrapes() as $grape) {
+            foreach ($search->getGrapes() as $grape) {
                 $k++;
                 $query = $query
                     ->andWhere(":grape$k MEMBER OF w.grapes")
@@ -73,7 +73,7 @@ class WineRepository extends ServiceEntityRepository
         }
 
 
-            return $query->getQuery();
+        return $query->getQuery();
 
     }
 
@@ -87,7 +87,6 @@ class WineRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 
 
     private function findVisibleQuery(): QueryBuilder

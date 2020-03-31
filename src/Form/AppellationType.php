@@ -16,26 +16,25 @@ class AppellationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => "form.name"
+            ])
             ->add('region', EntityType::class, [
+                'label' => "form.region",
                 'class' => Region::class,
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function(RegionRepository $regionRepository)
-                {
+                'query_builder' => function (RegionRepository $regionRepository) {
                     return $regionRepository->myFindAllRegionBuilder();
                 }
-                ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Appellation::class,
-            'translation_domain' => 'forms'
-
         ]);
     }
 }

@@ -74,7 +74,7 @@ class GrapeController extends AbstractController
      */
     public function delete(Request $request, Grape $grape): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$grape->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $grape->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($grape);
             $entityManager->flush();

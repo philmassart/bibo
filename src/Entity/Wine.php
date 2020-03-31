@@ -20,7 +20,6 @@ class Wine
 {
 
 
-
     const COLOR = [
         'wine.color.red' => 'wine.color.red',
         'wine.color.white' => 'wine.color.white',
@@ -212,7 +211,7 @@ class Wine
 
     public function getFormattedPrice(): string
     {
-        return number_format($this->price, 0, '', ' ' );
+        return number_format($this->price, 0, '', ' ');
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -343,7 +342,6 @@ class Wine
 
         return $this;
     }
-
 
 
 }

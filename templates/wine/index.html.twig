@@ -1,42 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Tous les vins'%}
+{% block title 'Tous les vins' %}
 
 {% block body %}
     <div class="jumbotron">
         <div class="container">
             {{ form_start(form) }}
             <div class="form-row" align-items-end>
-            <div class="col">
-                {{ form_row(form.minYear) }}
+                <div class="col">
+                    {{ form_row(form.minYear) }}
                 </div>
-            <div class="col">
+                <div class="col">
                     {{ form_row(form.maxPrice) }}
                 </div>
                 <div class="col">
                     {{ form_row(form.grapes) }}
                 </div>
-            <div class="col">
-                <div class="form-groupe">
-                <button class="btn btn-primary">Rechercher</button>
+                <div class="col">
+                    <div class="form-groupe">
+                        <button class="btn btn-primary">Rechercher</button>
+                    </div>
                 </div>
-            </div>
             </div>
             {{ form_end(form) }}
         </div>
     </div>
-  <div class="container mt-4">
+    <div class="container mt-4">
         <h1>Voir tous les vins</h1>
 
         <div class="row">
-          {% for wine in wines %}
-          <div class="col-md-4">
-            {% include 'wine/_wine.html.twig' %}
-          </div>
-        {% endfor %}
+            {% for wine in wines %}
+                <div class="col-md-4">
+                    {% include 'wine/_wine.html.twig' %}
+                </div>
+            {% endfor %}
         </div>
-      <div class="pagination">
-          {{ knp_pagination_render(wines) }}
-      </div>
-  </div>
+        <div class="pagination">
+            {{ knp_pagination_render(wines) }}
+        </div>
+    </div>
 {% endblock %}

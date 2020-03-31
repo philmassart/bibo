@@ -1,22 +1,21 @@
 form:
   name: Nom
-  content: Contenance
+  container: Contenant
+  country: Pays
+  region: Région
+  year: Millésime
+  appellation: Appellation
+  color: Couleur
+  alcohol: Alcool
+  grapes: Cépages
+  imagefile: Étiquette
+  price: Prix
+  description: Description
+  stock: En stock
 
-Year: Millésime
-Color: Couleur
-Country: Pays
-Price: Prix
-Grapes: Cépages
-Alcohol: Alcool
-Region: Région
-Container: Contenant
-Capacity: Capacité
-Image file: Image
-Unit: Unité
 
 wine:
   color:
     rose: rosé
     red: rouge
     white: blanc
-

@@ -13,15 +13,14 @@ class ContainerType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                "label" => "form.name"
+                'label' => "form.name"
             ])
             ->add('capacity', null, [
-                "label" => "form."
+                'label' => "form.capacity"
             ])
             ->add('unit', null, [
-                "label" => "form."
-            ])
-        ;
+                'label' => "form.unit"
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

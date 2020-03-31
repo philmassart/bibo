@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Wine;
@@ -39,10 +40,10 @@ class WineController extends AbstractController
             ->handleRequest($request);
 
         $wines = $paginator->paginate(
-            $this->repository ->findAllVisibleQuery($search),
+            $this->repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1),
-        12
-      );
+            12
+        );
         return $this->render('wine/index.html.twig', [
             'current_menu' => 'wines',
             'wines' => $wines,
@@ -73,7 +74,6 @@ class WineController extends AbstractController
                 'slug' => $wine->getSlug()
             ], 301);
         }
-
 
 
         return $this->render('wine/show.html.twig', [

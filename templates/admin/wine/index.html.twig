@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Gérer les vins'%}
+{% block title 'Gérer les vins' %}
 
 {% block body %}
     <div class="container mt-4">
@@ -23,17 +23,18 @@
             </thead>
             <tbody>
             {% for wine in wines %}
-            <tr>
-                <td>{{ wine.name }} {{ wine.year }}</td>
-                <td>
-                    <a href="{{path ('admin.wine.edit', {id: wine.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path('admin.wine.delete', {id: wine.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ wine.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ wine.name }} {{ wine.year }}</td>
+                    <td>
+                        <a href="{{ path ('admin.wine.edit', {id: wine.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin.wine.delete', {id: wine.id}) }}"
+                              style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ wine.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>

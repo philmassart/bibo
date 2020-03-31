@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Entity\Wine;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminWineController extends AbstractController
 {
     /**
-     * 
+     *
      */
     private $repository;
     /**
@@ -35,7 +36,7 @@ class AdminWineController extends AbstractController
         $wines = $this->repository->findAll();
         return $this->render('admin/wine/index.html.twig', compact('wines'));
     }
-    
+
     /**
      * @Route("/admin/wine/create", name="admin.wine.new")
      */
@@ -59,7 +60,7 @@ class AdminWineController extends AbstractController
         ]);
 
     }
-    
+
 
     /**
      * @Route("/admin/wine{id}", name="admin.wine.edit", methods="GET|POST")
@@ -90,7 +91,8 @@ class AdminWineController extends AbstractController
      * @param Wine $wine
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function delete(Wine $wine, Request $request) {
+    public function delete(Wine $wine, Request $request)
+    {
         if ($this->isCsrfTokenValid('delete' . $wine->getID(), $request->get('_token'))) {
             $this->em->remove($wine);
             $this->em->flush();
@@ -100,6 +102,6 @@ class AdminWineController extends AbstractController
 
         return $this->redirectToRoute('admin.wine.index');
     }
-    
-    
+
+
 }

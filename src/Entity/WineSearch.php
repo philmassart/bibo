@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class WineSearch {
+class WineSearch
+{
 
     /**
      * @var int|null
@@ -35,7 +37,6 @@ class WineSearch {
 
 
     }
-
 
 
     /**

@@ -83,7 +83,7 @@ class ContainerController extends AbstractController
      */
     public function delete(Request $request, Container $container): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$container->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $container->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($container);
             $entityManager->flush();

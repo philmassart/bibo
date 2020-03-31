@@ -19,10 +19,12 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Wine
 {
 
+
+
     const COLOR = [
-        1 => 'Rouge',
-        2 => 'Blanc',
-        3 => 'Rosé'
+        'wine.color.red' => 'wine.color.red',
+        'wine.color.white' => 'wine.color.white',
+        'wine.color.rose' => 'wine.color.rose'
     ];
 
     /**
@@ -66,10 +68,9 @@ class Wine
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
-    private $color;
-
+    private $color = self::COLOR['wine.color.white'];
 
     /**
      * @ORM\Column(type="boolean", options={"default": true})
@@ -79,13 +80,12 @@ class Wine
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $price;
+    private $price; //decimal ?
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $created_at;
-
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Grape", inversedBy="wines")
@@ -167,23 +167,24 @@ class Wine
     }
 
 
-    public function getColor(): ?int
+    /**
+     * @return string|null
+     */
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    public function setColor(int $color): self
+    /**
+     * @param string $color
+     * @return $this
+     */
+    public function setColor(string $color): self
     {
         $this->color = $color;
 
         return $this;
     }
-
-    public function getColorType(): string
-    {
-        return self::COLOR[$this->color];
-    }
-
 
     public function getStock(): ?bool
     {
@@ -284,6 +285,7 @@ class Wine
     /**
      * @param File|null $imageFile
      * @return Wine
+     * @throws \Exception
      */
     public function setImageFile(?File $imageFile): Wine
     {

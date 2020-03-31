@@ -12,17 +12,22 @@ class ContainerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('capacity')
-            ->add('unit')
+            ->add('name', null, [
+                "label" => "form.name"
+            ])
+            ->add('capacity', null, [
+                "label" => "form."
+            ])
+            ->add('unit', null, [
+                "label" => "form."
+            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Container::class,
-            'translation_domain' => 'forms'
+            'data_class' => Container::class
         ]);
     }
 }

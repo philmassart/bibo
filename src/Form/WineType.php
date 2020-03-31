@@ -26,7 +26,7 @@ class WineType extends AbstractType
             ->add('year')
             ->add('alcohol')
             ->add('color', ChoiceType::class,[
-                'choices' => $this->getChoices()
+                'choices' => Wine::COLOR
             ])
             ->add('grapes', EntityType::class, [
                 'class' => Grape::class,
@@ -72,17 +72,6 @@ class WineType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Wine::class,
-            'translation_domain' => 'forms'
         ]);
-    }
-
-    private function getChoices()
-    {
-        $choices = Wine::COLOR;
-        $output = [];
-        foreach ($choices as $k => $v) {
-            $output[$v] = $k;
-        }
-        return $output;
     }
 }

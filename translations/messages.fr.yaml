@@ -1,6 +1,8 @@
-Name: Nom
+form:
+  name: Nom
+  content: Contenance
+
 Year: Millésime
-Content: Contenance
 Color: Couleur
 Country: Pays
 Price: Prix
@@ -10,3 +12,11 @@ Region: Région
 Container: Contenant
 Capacity: Capacité
 Image file: Image
+Unit: Unité
+
+wine:
+  color:
+    rose: rosé
+    red: rouge
+    white: blanc
+

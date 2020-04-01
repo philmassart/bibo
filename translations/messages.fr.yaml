@@ -1,6 +1,7 @@
 form:
   name: Nom
   container: Contenant
+  capacity: Contenance
   country: Pays
   region: Région
   year: Millésime
@@ -12,6 +13,7 @@ form:
   price: Prix
   description: Description
   stock: En stock
+  unit: Unité
 
 
 wine:

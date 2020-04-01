@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Appellation;
 use App\Entity\Grape;
 use App\Entity\WineSearch;
+use App\Repository\AppellationRepository;
 use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -39,9 +41,20 @@ class WineSearchType extends AbstractType
                 'query_builder' => function (GrapeRepository $grapeRepository) {
                     return $grapeRepository->myFindAllBuilder();
                 }
+            ])
+            ->add('appellations', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'class' => Appellation::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'query_builder' => function (AppellationRepository $appellation) {
+                    return $appellation->myFindAllAppelBuilder();
+                }
+            ])
 
 
-            ]);
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

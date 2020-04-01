@@ -96,9 +96,9 @@ class Wine
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines",  cascade={"persist"})
      */
-    private $appellation;
+    private $appellations;
 
     /**
      * @ORM\Column(type="decimal", precision=3, scale=1, nullable=true)
@@ -114,7 +114,7 @@ class Wine
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
-//        $this->appellation = new ArrayCollection();
+        $this->appellations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -254,6 +254,20 @@ class Wine
         return $this;
     }
 
+
+
+    public function getAppellations(): ?Appellation
+    {
+        return $this->appellations;
+    }
+
+    public function setAppellation(?Appellation $appellation): self
+    {
+        $this->appellation = $appellation;
+
+        return $this;
+    }
+
     /**
      * @return string|null
      */
@@ -306,17 +320,6 @@ class Wine
         return $this;
     }
 
-    public function getAppellation(): ?Appellation
-    {
-        return $this->appellation;
-    }
-
-    public function setAppellation(?Appellation $appellation): self
-    {
-        $this->appellation = $appellation;
-
-        return $this;
-    }
 
     public function getAlcohol(): ?string
     {

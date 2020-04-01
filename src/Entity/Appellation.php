@@ -24,7 +24,7 @@ class Appellation
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Wine", mappedBy="appellation",  cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Wine", mappedBy="appellations",  cascade={"persist"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
     private $wines;

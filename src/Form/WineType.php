@@ -49,7 +49,7 @@ class WineType extends AbstractType
                     return $grapeRepository->myFindAllBuilder();
                 }
             ])
-            ->add('appellation', EntityType::class, [
+            ->add('appellations', EntityType::class, [
                 'label' => "form.appellation",
                 'class' => Appellation::class,
                 'required' => false,

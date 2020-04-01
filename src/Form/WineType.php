@@ -9,6 +9,7 @@ use App\Entity\Wine;
 use App\Repository\AppellationRepository;
 use App\Repository\ContainerRepository;
 use App\Repository\GrapeRepository;
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,7 +29,8 @@ class WineType extends AbstractType
                 'label' => "form.description"
             ])
             ->add('year', null, [
-                'label' => "form.year"
+                'label' => "form.year",
+                'required' => false,
             ])
             ->add('alcohol', null, [
                 'label' => "form.alcohol"

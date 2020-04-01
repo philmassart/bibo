@@ -60,8 +60,7 @@ class Wine
 
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\Range(min=1900, max=2050)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
@@ -158,7 +157,7 @@ class Wine
         return $this->year;
     }
 
-    public function setYear(int $year): self
+    public function setYear(?int $year): self
     {
         $this->year = $year;
 

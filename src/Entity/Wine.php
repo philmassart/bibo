@@ -43,6 +43,7 @@ class Wine
      * @var File|null
      * @Assert\Image(
      *     mimeTypes="image/jpeg"
+     *
      * )
      * @Vich\UploadableField(mapping="wine_image", fileNameProperty="filename")
      */
@@ -98,7 +99,7 @@ class Wine
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wines",  cascade={"persist"})
      */
-    private $appellations;
+    private $appellation;
 
     /**
      * @ORM\Column(type="decimal", precision=3, scale=1, nullable=true)
@@ -114,7 +115,7 @@ class Wine
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
-        $this->appellations = new ArrayCollection();
+ //       $this->appellation = new ArrayCollection(); // recherche not working
     }
 
     public function getId(): ?int
@@ -256,9 +257,9 @@ class Wine
 
 
 
-    public function getAppellations(): ?Appellation
+    public function getAppellation(): ?Appellation
     {
-        return $this->appellations;
+        return $this->appellation;
     }
 
     public function setAppellation(?Appellation $appellation): self

@@ -42,16 +42,16 @@ class WineSearchType extends AbstractType
                     return $grapeRepository->myFindAllBuilder();
                 }
             ])
-            ->add('appellations', EntityType::class, [
-                'required' => false,
-                'label' => false,
-                'class' => Appellation::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'query_builder' => function (AppellationRepository $appellation) {
-                    return $appellation->myFindAllAppelBuilder();
-                }
-            ])
+//            ->add('appellation', EntityType::class, [
+//                'required' => false,
+//                'label' => false,
+//                'class' => Appellation::class,
+//                'choice_label' => 'name',
+//                'multiple' => false,
+//                'query_builder' => function (AppellationRepository $appellation) {
+//                    return $appellation->myFindAllAppelBuilder();
+//                }
+//            ])
 
 
         ;

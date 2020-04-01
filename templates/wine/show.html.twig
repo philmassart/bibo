@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-8">
                     <h1>{{ wine.name }} {{ wine.year }}</h1>
-                    <h2>{{ wine.appellations.name }}</h2>
+                    <h2>{{ wine.appellation.name }}</h2>
                     {# <div class="text-primary" style="font-size: 4rem; font-weight:bold;" >{{ wine.formattedPrice }}</div> #}
                     {# <a href="#" class="btn btn-primary">Contacter???</a>} #}
                 </div>
@@ -41,7 +41,7 @@
 
                     <tr>
                         <td>Appellation</td>
-                        <td>{{ wine.appellations.name }}</td>
+                        <td>{{ wine.appellation.name }}</td>
                     </tr>
                     <tr>
                         <td>Couleur</td>
@@ -72,11 +72,11 @@
 
                 <h2>Région</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">{{ wine.appellations.region.name }}</li>
+                    <li class="list-group-item">{{ wine.appellation.region.name }}</li>
                 </ul>
                 <h2>Appellation</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">{{ wine.appellations.name }}</li>
+                    <li class="list-group-item">{{ wine.appellation.name }}</li>
                 </ul>
                 <h2>Cépages</h2>
                 <ul class="list-group">

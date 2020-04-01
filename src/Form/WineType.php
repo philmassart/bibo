@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class WineType extends AbstractType
 {
@@ -74,9 +75,9 @@ class WineType extends AbstractType
             ->add('price', null, [
                 'label' => "form.price"
             ])
-            ->add('imageFile', FileType::class, [
+            ->add('imageFile', VichFileType::class, [
                 'label' => "form.imagefile",
- //               'required' => false
+                'required' => false
             ]);
     }
 

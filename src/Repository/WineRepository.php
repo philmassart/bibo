@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -63,20 +64,25 @@ class WineRepository extends ServiceEntityRepository
         }
 
         if ($search->getGrapes()->count() > 0) {
-            $k = 0;
+            $i = 0;
+            $whereOr = '(';
+            /** @var Grape $grape */
             foreach ($search->getGrapes() as $grape) {
-                $k++;
+                $i++;
                 $query = $query
-                    ->andWhere(":grape$k MEMBER OF w.grapes")
-                    ->setParameter("grape$k", $grape);
+                    ->leftJoin('w.grapes', 'w_'.$i);
+                $whereOr .= '(w_'.$i.'.id = '.$grape->getId().') OR ';
             }
+            $query->andWhere(substr($whereOr, 0, -4).')');
         }
 
-
-
+        if ($search->getAppellation()) {
+            $query = $query
+                ->andWhere("w.appellation = :appellation")
+                ->setParameter("appellation", $search->getAppellation());
+        }
 
         return $query->getQuery();
-
     }
 
     /**

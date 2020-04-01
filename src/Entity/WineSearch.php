@@ -25,7 +25,7 @@ class WineSearch
     private $grapes;
 
     /**
-     * @var ArrayCollection
+     * @var Appellation
      */
     private $appellation;
 
@@ -33,9 +33,6 @@ class WineSearch
     public function __construct()
     {
         $this->grapes = new ArrayCollection();
-        $this->appellation = new ArrayCollection();
-
-
     }
 
 
@@ -94,20 +91,21 @@ class WineSearch
     }
 
     /**
-     * @return ArrayCollection
+     * @return Appellation
      */
-    public function getAppellation(): ArrayCollection
+    public function getAppellation(): ?Appellation
     {
         return $this->appellation;
     }
 
     /**
-     * @param ArrayCollection $appellation
+     * @param Appellation $appellation
      * @return WineSearch
      */
-    public function setAppellation(ArrayCollection $appellation): WineSearch
+    public function setAppellation(?Appellation $appellation): WineSearch
     {
         $this->appellation = $appellation;
+
         return $this;
     }
 

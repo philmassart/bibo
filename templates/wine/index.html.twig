@@ -3,27 +3,38 @@
 {% block title 'Tous les vins' %}
 
 {% block body %}
-    <div class="jumbotron">
-        <div class="container">
-            {{ form_start(form) }}
-            <div class="form-row" align-items-end>
+<div class="jumbotron">
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="form-row align-items-end">
+            <div class="col">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.color) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.appellation) }}
+            </div>
+        </div>
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(form.grapes) }}
+                </div>
                 <div class="col">
                     {{ form_row(form.minYear) }}
                 </div>
                 <div class="col">
                     {{ form_row(form.maxPrice) }}
                 </div>
-                <div class="col">
-                    {{ form_row(form.grapes) }}
-                </div>
-                <div class="col">
-                    {{ form_row(form.appellation) }}
-                </div><div class="col">
-                    <div class="form-groupe">
-                        <button class="btn btn-primary">Rechercher</button>
-                    </div>
+            </div>
+
+            <div class="col">
+                <div class="form-groupe">
+                    <button class="btn btn-primary">Rechercher</button>
                 </div>
             </div>
+
             {{ form_end(form) }}
         </div>
     </div>
@@ -41,4 +52,4 @@
             {{ knp_pagination_render(wines) }}
         </div>
     </div>
-{% endblock %}
+    {% endblock %}

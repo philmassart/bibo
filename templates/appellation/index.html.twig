@@ -129,9 +129,9 @@
             </tr>
             </thead>
             <tbody>
-            <h3>Languedoc-Roussilon</h3>
+            <h3>Languedoc-Roussillon</h3>
             {% for appellation in appellation %}
-                {% if appellation.region.name == 'Languedoc-Roussilon' %}
+                {% if appellation.region.name == 'Languedoc-Roussillon' %}
                     {{ include ('appellation/_list.html.twig') }}
                 {% endif %}
             {% endfor %}
@@ -292,6 +292,25 @@
             <h3>Catalogne</h3>
             {% for appellation in appellation %}
                 {% if appellation.region.name == 'Catalogne' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div id="Chili"><h2>Chili</h2></div>
+            <h3>Valle Central</h3>
+            {% for appellation in appellation %}
+                {% if appellation.region.name == 'Valle Central' %}
                     {{ include ('appellation/_list.html.twig') }}
                 {% endif %}
             {% endfor %}

@@ -14,7 +14,8 @@ class Region
     const COUNTRY = [
         1 => 'France',
         2 => 'Italie',
-        3 => 'Espagne'
+        3 => 'Espagne',
+        4 => 'Chili'
     ];
 
 

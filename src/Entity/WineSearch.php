@@ -29,6 +29,16 @@ class WineSearch
      */
     private $appellation;
 
+    /**
+     * @var string|null
+     */
+    private $color;
+
+    /**
+     * @var string|null
+     */
+    private $name;
+
 
     public function __construct()
     {
@@ -107,6 +117,40 @@ class WineSearch
         $this->appellation = $appellation;
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param string|null $color
+     * @return WineSearch
+     */
+    public function setColor(string $color): WineSearch
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
     }
 
 

@@ -115,7 +115,6 @@ class Wine
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
- //       $this->appellation = new ArrayCollection(); // recherche not working
     }
 
     public function getId(): ?int

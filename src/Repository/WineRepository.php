@@ -52,13 +52,13 @@ class WineRepository extends ServiceEntityRepository
         $query = $this->findVisibleQuery();
 
         if ($search->getMaxPrice()) {
-            $query = $query
+            $query
                 ->andWhere('w.price <= :maxprice')
                 ->setParameter('maxprice', $search->getMaxPrice());
         }
 
         if ($search->getMinYear()) {
-            $query = $query
+            $query
                 ->andWhere('w.year >= :minyear')
                 ->setParameter('minyear', $search->getMinYear());
         }
@@ -69,7 +69,7 @@ class WineRepository extends ServiceEntityRepository
             /** @var Grape $grape */
             foreach ($search->getGrapes() as $grape) {
                 $i++;
-                $query = $query
+                $query
                     ->leftJoin('w.grapes', 'w_'.$i);
                 $whereOr .= '(w_'.$i.'.id = '.$grape->getId().') OR ';
             }
@@ -77,10 +77,22 @@ class WineRepository extends ServiceEntityRepository
         }
 
         if ($search->getAppellation()) {
-            $query = $query
+            $query
                 ->andWhere("w.appellation = :appellation")
                 ->setParameter("appellation", $search->getAppellation());
         }
+
+        if ($search->getColor()) {
+            $query
+                ->andWhere("w.color = :color")
+                ->setParameter("color", $search->getColor());
+        }
+
+        if ($search->getName())
+        {
+            $query->andWhere("w.name LIKE '%".$search->getName()."%'");
+        }
+
 
         return $query->getQuery();
     }
@@ -102,7 +114,17 @@ class WineRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('w')
             ->where('w.stock = true');
     }
+
+
+    public function myFindAllColorBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('w')
+            ->select('w')
+            ->orderBy('w.color', 'ASC');
+    }
 }
+
+
 
 
 // /**

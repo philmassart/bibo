@@ -17,12 +17,14 @@ class AppellationType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "form.name"
+                'label' => "form.name",
+                'required' => true
+
             ])
             ->add('region', EntityType::class, [
                 'label' => "form.region",
                 'class' => Region::class,
-                'required' => false,
+                'required' => true,
                 'choice_label' => 'name',
                 'multiple' => false,
                 'query_builder' => function (RegionRepository $regionRepository) {

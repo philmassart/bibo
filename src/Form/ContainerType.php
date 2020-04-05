@@ -13,13 +13,18 @@ class ContainerType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "form.name"
+                'label' => "form.name",
+                'required' => true
             ])
             ->add('capacity', null, [
-                'label' => "form.capacity"
+                'label' => "form.capacity",
+                'required' => true
+
             ])
             ->add('unit', null, [
-                'label' => "form.unit"
+                'label' => "form.unit",
+                'required' => true
+
             ]);
     }
 

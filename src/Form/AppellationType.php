@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Appellation;
 use App\Entity\Region;
-use App\Repository\AppellationRepository;
 use App\Repository\RegionRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

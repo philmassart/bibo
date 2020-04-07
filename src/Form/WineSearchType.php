@@ -8,8 +8,6 @@ use App\Entity\Wine;
 use App\Entity\WineSearch;
 use App\Repository\AppellationRepository;
 use App\Repository\GrapeRepository;
-use App\Repository\WineRepository;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

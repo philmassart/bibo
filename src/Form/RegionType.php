@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Region;
-use App\Entity\Wine;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;

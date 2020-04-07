@@ -1,8 +1,3 @@
-{#{% extends 'base.html.twig' %}#}
-
-
-
-
 
 {% block body %}
     <h1 align="center">Liste des vins</h1>
@@ -23,10 +18,6 @@
 
     {% set appellation = 'Bordeaux' %}
     <h3>Bordeaux</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Champagne' %}
-    <h3>Champagne</h3>
     {% include 'wine/_listp.html.twig' %}
 
     {% set appellation = 'Champagne' %}

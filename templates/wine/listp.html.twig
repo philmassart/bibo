@@ -1,0 +1,87 @@
+{#{% extends 'base.html.twig' %}#}
+
+
+
+
+
+{% block body %}
+    <h1 align="center">Liste des vins</h1>
+
+    <h2>France</h2>
+
+    {% set appellation = 'Alsace' %}
+    <h3>Alsace</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Beaujolais' %}
+    <h3>Beaujolais</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Bourgogne' %}
+    <h3>Bourgogne</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Bordeaux' %}
+    <h3>Bordeaux</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Champagne' %}
+    <h3>Champagne</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Champagne' %}
+    <h3>Champagne</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Jura-Savoie' %}
+    <h3>Jura-Savoie</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Languedoc-Roussillon' %}
+    <h3>Languedoc-Roussillon</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Loire' %}
+    <h3>Loire</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Provence-Corse' %}
+    <h3>Provence-Corse</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Rhône' %}
+    <h3>Rhône</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+    {% set appellation = 'Sud-Ouest' %}
+    <h3>Sud-Ouest</h3>
+    {% include 'wine/_listp.html.twig' %}
+
+
+
+    <h2>Vins hors de France</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Millésime</th>
+            <th>Appellation</th>
+            <th>Couleur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for wine in wines|sort((a, b) => a.name <=> b.name) %}
+            {% if wine.appellation.region.country != 1 %}
+                <tr>
+                    <td>{{ wine.name }}</td>
+                    <td>{{ wine.year }}</td>
+                    <td>{{ wine.appellation.name }}</td>
+                    <td><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}" alt="card-img-top"
+                             style=" height: 35px; width: auto"></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

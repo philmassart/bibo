@@ -111,9 +111,9 @@
             </tr>
             </thead>
             <tbody>
-            <h3>Jura</h3>
+            <h3>Jura-Savoie</h3>
             {% for appellation in appellation %}
-                {% if appellation.region.name == 'Jura' %}
+                {% if appellation.region.name == 'Jura-Savoie' %}
                     {{ include ('appellation/_list.html.twig') }}
                 {% endif %}
             {% endfor %}
@@ -183,23 +183,6 @@
             <h3>Rhône</h3>
             {% for appellation in appellation %}
                 {% if appellation.region.name == 'Rhône' %}
-                    {{ include ('appellation/_list.html.twig') }}
-                {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <h3>Savoie</h3>
-            {% for appellation in appellation %}
-                {% if appellation.region.name == 'Savoie' %}
                     {{ include ('appellation/_list.html.twig') }}
                 {% endif %}
             {% endfor %}

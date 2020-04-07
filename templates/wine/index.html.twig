@@ -29,13 +29,16 @@
                 </div>
             </div>
 
+        <div class="form-row align-items-end">
             <div class="col">
                 <div class="form-groupe">
                     <button class="btn btn-primary">Rechercher</button>
                 </div>
             </div>
+        <a href="{{ path('wine_list') }}" class="btn btn-primary">Imprimer tous les vins</a>
+        </div>
 
-            {{ form_end(form) }}
+        {{ form_end(form) }}
         </div>
     </div>
     <div class="container mt-4">

@@ -17,6 +17,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
+use Twig\Environment;
+
 
 class WineController extends AbstractController
 {
@@ -25,11 +29,15 @@ class WineController extends AbstractController
      * @var WineRepository
      */
     private $repository;
+    private $twig;
+    private $pdf;
 
-    public function __construct(WineRepository $repository, EntityManagerInterface $em)
+    public function __construct(WineRepository $repository, EntityManagerInterface $em, Environment $twig, Pdf $pdf)
     {
 
         $this->repository = $repository;
+        $this->twig = $twig;
+        $this->pdf = $pdf;
     }
 
     /**
@@ -122,7 +130,26 @@ class WineController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/pdf", name="pdf")
+     * @return Response
 
+     */
+    public function pdfAction(WineRepository $repository)
+    {
+        $wines = $repository->findAll();
+
+        $html = $this->renderView('wine/snappy.html.twig', [
+           'wines' => $wines,
+            ]);
+
+        return new PdfResponse(
+            $this->pdf->getOutputFromHtml($html),
+            'liste.pdf',
+            'application/pdf',
+            'inline'
+        );
+    }
 
 
 

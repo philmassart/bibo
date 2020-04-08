@@ -8,7 +8,7 @@
         padding: 8px;
         text-align: left;
         font-size: small;
-        font-family: "Palatino", Arial, Helvetica, sans-serif;
+        font-family: "Calibri", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
 
     }
@@ -18,7 +18,7 @@
         text-align: left;
         background-color: #007bff;
         color: white;
-        font-family: "Palatino", Arial, Helvetica, sans-serif;
+        font-family: "Calibri", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
     }
 
@@ -27,15 +27,18 @@
     }
 
     th td:nth-child(1) {
-        width:50%;
+        width:45%;
     }
     th td:nth-child(2) {
         width:10%;
     }
     th td:nth-child(3) {
-        width:30%;
+        width:25%;
     }
     th td:nth-child(4) {
+        width:10%;
+    }
+    th td:nth-child(5) {
         width:10%;
     }
     tr:hover {
@@ -52,6 +55,7 @@
         <th>Millésime</th>
         <th>Appellation</th>
         <th style="text-align: center">Couleur</th>
+        <th>Qté</th>
     </tr>
     </thead>
     <tbody>
@@ -64,6 +68,7 @@
                 <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
                                                     alt="card-img-top"
                                                     style=" height: 35px; width: auto;"></td>
+                <td>{{ wine.nbbottle }}</td>
             </tr>
         {% endif %}
     {% endfor %}

@@ -67,6 +67,29 @@
             </tbody>
         </table>
 
+        <table class="table table-striped">
+            <tbody>
+            <h3>Grèce</h3>
+            {% for region in regions  %}
+                {% if region.country == 5 %}
+                    {{ include ('region/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <tbody>
+            <h3>Tchéquie</h3>
+            {% for region in regions  %}
+                {% if region.country == 6 %}
+                    {{ include ('region/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
 
                 <div class="div text-right">
             <a href="{{ path('region.new') }}" class="btn btn-primary">Créer une nouvelle region</a>

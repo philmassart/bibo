@@ -15,7 +15,9 @@ class Region
         1 => 'France',
         2 => 'Italie',
         3 => 'Espagne',
-        4 => 'Chili'
+        4 => 'Chili',
+        5 => 'Grèce',
+        6 => 'Tchéquie'
     ];
 
 

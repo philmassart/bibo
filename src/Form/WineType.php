@@ -71,6 +71,9 @@ class WineType extends AbstractType
             ->add('stock', null, [
                 'label' => "form.stock"
             ])
+            ->add('nbbottle', null, [
+                'label' => "form.nbbottle"
+            ])
             ->add('price', null, [
                 'label' => "form.price"
             ])

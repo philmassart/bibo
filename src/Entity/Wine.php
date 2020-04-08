@@ -111,6 +111,11 @@ class Wine
      */
     private $container;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nbbottle;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -341,6 +346,18 @@ class Wine
     public function setContainer(?Container $container): self
     {
         $this->container = $container;
+
+        return $this;
+    }
+
+    public function getNbBottle(): ?int
+    {
+        return $this->nbbottle;
+    }
+
+    public function setNbBottle(int $nbbottle): self
+    {
+        $this->nbbottle = $nbbottle;
 
         return $this;
     }

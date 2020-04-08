@@ -60,6 +60,7 @@
             <th>Millésime</th>
             <th>Appellation</th>
             <th>Couleur</th>
+            <th>Qté</th>
         </tr>
         </thead>
         <tbody>
@@ -71,6 +72,7 @@
                     <td>{{ wine.appellation.name }}</td>
                     <td><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}" alt="card-img-top"
                              style=" height: 35px; width: auto"></td>
+                    <td>{{ wine.nbbottle }}</td>
                 </tr>
             {% endif %}
         {% endfor %}

@@ -39,6 +39,7 @@ class Appellation
         $this->wines = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,5 +98,36 @@ class Appellation
         $this->region = $region;
 
         return $this;
+    }
+
+
+    public function getTotalBottles()
+    {
+        $return = 0;
+        foreach($this->getWines() as $wine)
+        {
+            $return += $wine->getNbBottle();
+        }
+
+        return $return;
+    }
+
+    public function getTotalPrices(bool $byBottle = false)
+    {
+        $return = 0;
+        foreach($this->getWines() as $wine)
+        {
+            if ($byBottle)
+            {
+                $return += $wine->getPrice() * $wine->getNbBottle();
+            }
+            else
+            {
+                $return += $wine->getPrice();
+            }
+
+        }
+
+        return $return;
     }
 }

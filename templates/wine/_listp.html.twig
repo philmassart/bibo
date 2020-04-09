@@ -5,7 +5,7 @@
 
     td {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 7px;
         text-align: left;
         font-size: small;
         font-family: "Calibri", Arial, Helvetica, sans-serif;
@@ -14,7 +14,7 @@
     }
 
     th {
-        padding: 8px;
+        padding: 7px;
         text-align: left;
         background-color: #007bff;
         color: white;
@@ -41,6 +41,9 @@
     th td:nth-child(5) {
         width:10%;
     }
+    th td:nth-child(6) {
+        width:10%;
+    }
     tr:hover {
         background-color: #ddd;
     }
@@ -56,11 +59,13 @@
         <th>Appellation</th>
         <th style="text-align: center">Couleur</th>
         <th>Qté</th>
+        <th style="text-align: center">P.U.</th>
     </tr>
     </thead>
     <tbody>
-    {% for wine in wines|sort((a, b) => a.name <=> b.name) %}
-        {% if wine.appellation.region.name == appellation %}
+
+{#    {% for appellation in region.appellations %}#}
+        {% for wine in region.wines %}
             <tr>
                 <td>{{ wine.name }}</td>
                 <td style="text-align: center">{{ wine.year }}</td>
@@ -68,10 +73,11 @@
                 <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
                                                     alt="card-img-top"
                                                     style=" height: 35px; width: auto;"></td>
-                <td>{{ wine.nbbottle }}</td>
+                <td style="text-align: center">{{ wine.nbbottle }}</td>
+                <td style="text-align: center">{{ wine.price|price }}</td>
             </tr>
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
+{#    {% endfor %}#}
     </tbody>
 </table>
 

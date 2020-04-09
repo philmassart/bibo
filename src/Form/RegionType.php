@@ -18,7 +18,7 @@ class RegionType extends AbstractType
             ])
             ->add('country', ChoiceType::class, [
                 'label' => "form.country",
-                'choices' => $this->getChoices()
+                'choices' => Region::COUNTRY
             ]);
     }
 

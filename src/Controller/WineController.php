@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Appellation;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
 use App\Form\WineSearchType;
+use App\Repository\AppellationRepository;
+use App\Repository\RegionRepository;
 use App\Repository\WineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -135,13 +138,23 @@ class WineController extends AbstractController
      * @return Response
 
      */
-    public function pdfAction(WineRepository $repository)
+    public function pdf(RegionRepository $regionRepository)
     {
-        $wines = $repository->findAll();
+        $regions = $regionRepository->findBy([], ["name" => "ASC"]);
+
+        $totalBottles = 0;
+        $totalPrices = 0;
+        foreach($regions as $region)
+        {
+            $totalBottles += $region->getTotalBottles();
+            $totalPrices += $region->getTotalPrices(true);
+        }
 
         $html = $this->renderView('wine/snappy.html.twig', [
-           'wines' => $wines,
-            ]);
+           'regions' => $regions,
+            'totalBottles' => $totalBottles,
+            'totalPrices' => $totalPrices
+        ]);
 
         return new PdfResponse(
             $this->pdf->getOutputFromHtml($html),
@@ -150,9 +163,6 @@ class WineController extends AbstractController
             'inline'
         );
     }
-
-
-
 
 
 }

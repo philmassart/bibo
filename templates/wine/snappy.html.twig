@@ -4,54 +4,29 @@
 {% block content %}
     <h1 align="center">Liste des vins</h1>
 
+    <h3>Nombre total de bouteilles: {{ totalBottles }}</h3>
+    <h3>Valeur totale de la cave: {{ totalPrices|price() }} (valeur à l'achat)</h3>
+
+
     <h2>France</h2>
+    {% for region in regions %}
+        {% if region.country == 'region.country.france' %}
+                <h3>{{ region.name }}</h3>
+                {% include 'wine/_listp.html.twig' %}
+            {% endif %}
+    {% endfor %}
 
-    {% set appellation = 'Alsace' %}
-    <h3>Alsace</h3>
-    {% include 'wine/_listp.html.twig' %}
+    <h2>Vins hors de France</h2>
+    {% for region in regions %}
+        {% if region.country != 'region.country.france' %}
+            {% if region.appellations|length > 0 %}
+                <h3>{{ region.name }} ({{ region.country|trans }})</h3>
+                {% include 'wine/_listp.html.twig' %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
 
-    {% set appellation = 'Beaujolais' %}
-    <h3>Beaujolais</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Bourgogne' %}
-    <h3>Bourgogne</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Bordeaux' %}
-    <h3>Bordeaux</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Champagne' %}
-    <h3>Champagne</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Jura-Savoie' %}
-    <h3>Jura-Savoie</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Languedoc-Roussillon' %}
-    <h3>Languedoc-Roussillon</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Loire' %}
-    <h3>Loire</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Provence-Corse' %}
-    <h3>Provence-Corse</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Rhône' %}
-    <h3>Rhône</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-    {% set appellation = 'Sud-Ouest' %}
-    <h3>Sud-Ouest</h3>
-    {% include 'wine/_listp.html.twig' %}
-
-
-
+    {#
     <h2>Vins hors de France</h2>
     <table class="table">
         <thead>
@@ -77,6 +52,6 @@
             {% endif %}
         {% endfor %}
         </tbody>
-    </table>
+    </table>#}
 
 {% endblock %}

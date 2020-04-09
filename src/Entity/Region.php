@@ -12,12 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Region
 {
     const COUNTRY = [
-        1 => 'France',
-        2 => 'Italie',
-        3 => 'Espagne',
-        4 => 'Chili',
-        5 => 'Grèce',
-        6 => 'Tchéquie'
+        'region.country.france' => 'region.country.france',
+        'region.country.italy' => 'region.country.italy',
+        'region.country.spain' => 'region.country.spain',
+        'region.country.chili' => 'region.country.chili',
+        'region.country.greece' => 'region.country.greece',
+        'region.country.czechia' => 'region.country.czechia'
     ];
 
 
@@ -34,12 +34,13 @@ class Region
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    private $country;
+    private $country = self::COUNTRY['region.country.france'];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Appellation", mappedBy="region", cascade={"persist"})
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private $appellations;
 
@@ -65,22 +66,22 @@ class Region
         return $this;
     }
 
-    public function getCountry(): ?int
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
-    public function setCountry(int $country): self
+    public function setCountry(string $country): self
     {
         $this->country = $country;
 
         return $this;
     }
 
-    public function getCountryType(): string
-    {
-        return self::COUNTRY[$this->country];
-    }
+//    public function getCountryType(): string
+//    {
+//        return self::COUNTRY[$this->country];
+//    }
 
     /**
      * @return Collection|Appellation[]
@@ -112,4 +113,41 @@ class Region
 
         return $this;
     }
+
+    public function getTotalBottles()
+    {
+        $return = 0;
+        foreach ($this->getAppellations() as $appellation)
+        {
+            $return += $appellation->getTotalBottles();
+        }
+
+        return $return;
+    }
+
+    public function getTotalPrices(bool $byBottle = false)
+    {
+        $return = 0;
+        foreach ($this->getAppellations() as $appellation)
+        {
+            $return += $appellation->getTotalPrices($byBottle);
+        }
+
+        return $return;
+    }
+
+    public function getWines()
+    {
+        $wines = [];
+
+        foreach($this->getAppellations() as $appellation)
+        {
+            foreach ($appellation->getWines() as $wine) {
+                $wines[] = $wine;
+            }
+        }
+
+        return $wines;
+    }
+
 }

@@ -22,3 +22,12 @@ wine:
     rose: rosé
     red: rouge
     white: blanc
+
+region:
+  country:
+    france: France
+    italy: Italie
+    spain: Espagne
+    chili: Chili
+    greece: Grèce
+    czechia: Tchéquie

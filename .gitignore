@@ -23,3 +23,4 @@ public/media
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
+/nbproject/private/

@@ -14,8 +14,10 @@
 
     {% for region in regions %}
         {% if region.country == 'region.country.france' %}
-            <h3>{{ region.name }}</h3>
-            {% include 'wine/_listp.html.twig' %}
+            {% if region.appellations|length > 0 %}
+                <h3>{{ region.name }}</h3>
+                {% include 'wine/_listp.html.twig' %}
+            {% endif %}
         {% endif %}
     {% endfor %}
 

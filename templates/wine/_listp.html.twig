@@ -23,7 +23,7 @@
                                                 style=" height: 35px; width: auto;"></td>
             <td>
                 {% for grape in wine.grapes %}
-                    {{ grape.name|join }}
+                    {{ grape.name }}
                 {% endfor %}
             </td>
             <td style="text-align: center">{{ wine.nbbottle }}</td>

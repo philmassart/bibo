@@ -1,56 +1,3 @@
-<style>
-    table {
-        width: 100%;
-    }
-
-    td {
-        border: 1px solid #ddd;
-        padding: 7px;
-        text-align: left;
-        font-size: small;
-        font-family: "Calibri", Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-
-    }
-
-    th {
-        padding: 7px;
-        text-align: left;
-        background-color: #007bff;
-        color: white;
-        font-family: "Calibri", Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    th td:nth-child(1) {
-        width:45%;
-    }
-    th td:nth-child(2) {
-        width:10%;
-    }
-    th td:nth-child(3) {
-        width:25%;
-    }
-    th td:nth-child(4) {
-        width:10%;
-    }
-    th td:nth-child(5) {
-        width:10%;
-    }
-    th td:nth-child(6) {
-        width:10%;
-    }
-    tr:hover {
-        background-color: #ddd;
-    }
-    table.print-friendly tr td, table.print-friendly tr th {
-        page-break-inside: auto;
-    }
-</style>
 <table class="table">
     <thead>
     <tr>
@@ -58,6 +5,7 @@
         <th>Millésime</th>
         <th>Appellation</th>
         <th style="text-align: center">Couleur</th>
+{#        <th>Cépages</th>#}
         <th>Qté</th>
         <th style="text-align: center">P.U.</th>
     </tr>
@@ -73,6 +21,10 @@
                 <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
                                                     alt="card-img-top"
                                                     style=" height: 35px; width: auto;"></td>
+{#                {% for grape in wine.grapes %}#}
+
+{#                <td >{{ grape.name }}</td>#}
+{#                {% endfor %}#}
                 <td style="text-align: center">{{ wine.nbbottle }}</td>
                 <td style="text-align: center">{{ wine.price|price }}</td>
             </tr>

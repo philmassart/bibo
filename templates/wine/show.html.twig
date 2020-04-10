@@ -49,17 +49,17 @@
                     </tr>
                     <tr>
                         <td>Alcool</td>
-                        <td> {{ wine.alcohol|number_format(1, ',', ' ') }} %</td>
+                        <td> {{ wine.alcohol|alcohol }} </td>
                     </tr>
                     <tr>
                         <td>Contenance</td>
                         <td>{{ wine.container.name }}
-                            ({{ wine.container.capacity|number_format(1, ',', ' ') }} {{ wine.container.unit }})
+                            ({{ wine.container.capacity|capacity }} {{ wine.container.unit }})
                         </td>
                     </tr>
                     <tr>
-                        <td>Nombre (pas encore implémenté)</td>
-                        <td></td>
+                        <td>Nombre</td>
+                        <td>{{ wine.nbbottle }}</td>
                     </tr>
                     <tr>
                         <td>Producteur (pas encore implémenté</td>

@@ -1,5 +1,7 @@
 <head>
     <base href="http://127.0.0.1:8000/">
+    <link href="../public/css/pdf.css" rel="stylesheet">
+    <link href="{{ asset("css/pdf.css") }}" rel="stylesheet" type="text/css">
 </head>
 {% block content %}
     <h1 align="center">Liste des vins</h1>
@@ -9,12 +11,14 @@
 
 
     <h2>France</h2>
+
     {% for region in regions %}
         {% if region.country == 'region.country.france' %}
-                <h3>{{ region.name }}</h3>
-                {% include 'wine/_listp.html.twig' %}
-            {% endif %}
+            <h3>{{ region.name }}</h3>
+            {% include 'wine/_listp.html.twig' %}
+        {% endif %}
     {% endfor %}
+
 
     <h2>Vins hors de France</h2>
     {% for region in regions %}

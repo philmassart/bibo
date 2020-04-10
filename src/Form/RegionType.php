@@ -14,7 +14,8 @@ class RegionType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "form.name"
+                'label' => "form.name",
+                'attr' => ['autofocus' => true]
             ])
             ->add('country', ChoiceType::class, [
                 'label' => "form.country",

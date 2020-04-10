@@ -13,7 +13,8 @@ class GrapeType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "form.name"
+                'label' => "form.name",
+                'attr' => ['autofocus' => true]
             ]);
     }
 

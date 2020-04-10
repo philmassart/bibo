@@ -17,7 +17,8 @@ class AppellationType extends AbstractType
         $builder
             ->add('name', null, [
                 'label' => "form.name",
-                'required' => true
+                'required' => true,
+                'attr' => ['autofocus' => true]
 
             ])
             ->add('region', EntityType::class, [

@@ -2,34 +2,35 @@
     <thead>
     <tr>
         <th>Nom</th>
-        <th>Millésime</th>
-        <th>Appellation</th>
+        <th style="text-align: center">Millésime</th>
+        <th style="text-align: center">Appellation</th>
         <th style="text-align: center">Couleur</th>
-{#        <th>Cépages</th>#}
-        <th>Qté</th>
+        <th>Cépages</th>
+        <th style="text-align: center">Qté</th>
         <th style="text-align: center">P.U.</th>
     </tr>
     </thead>
     <tbody>
 
-{#    {% for appellation in region.appellations %}#}
-        {% for wine in region.wines %}
-            <tr>
-                <td>{{ wine.name }}</td>
-                <td style="text-align: center">{{ wine.year }}</td>
-                <td>{{ wine.appellation.name }}</td>
-                <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
-                                                    alt="card-img-top"
-                                                    style=" height: 35px; width: auto;"></td>
-{#                {% for grape in wine.grapes %}#}
-
-{#                <td >{{ grape.name }}</td>#}
-{#                {% endfor %}#}
-                <td style="text-align: center">{{ wine.nbbottle }}</td>
-                <td style="text-align: center">{{ wine.price|price }}</td>
-            </tr>
-        {% endfor %}
-{#    {% endfor %}#}
+    {#    {% for appellation in region.appellations %}#}
+    {% for wine in region.wines %}
+        <tr>
+            <td>{{ wine.name }}</td>
+            <td style="text-align: center">{{ wine.year }}</td>
+            <td>{{ wine.appellation.name }}</td>
+            <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
+                                                alt="card-img-top"
+                                                style=" height: 35px; width: auto;"></td>
+            <td>
+                {% for grape in wine.grapes %}
+                    {{ grape.name|join }}
+                {% endfor %}
+            </td>
+            <td style="text-align: center">{{ wine.nbbottle }}</td>
+            <td style="text-align: center">{{ wine.price|price }}</td>
+        </tr>
+    {% endfor %}
+    {#    {% endfor %}#}
     </tbody>
 </table>
 

@@ -22,7 +22,8 @@ class WineType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "form.name"
+                'label' => "form.name",
+                'attr' => ['autofocus' => true]
             ])
             ->add('description', null, [
                 'label' => "form.description"

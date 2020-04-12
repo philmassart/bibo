@@ -123,15 +123,6 @@ class WineRepository extends ServiceEntityRepository
             ->orderBy('w.color', 'ASC');
     }
 
-//    public function countBottle(): QueryBuilder
-//    {
-//        return $this->createQueryBuilder('w')
-////            ->andWhere('w.nbbottle = :nbbottle')
-////            ->setParameter('nbbottle', $nbbottle)
-//            ->select('SUM(w.nbbottle) as totalBottle')
-//            ->getQuery()
-//            ->getResult();
-//    }
 
 }
 

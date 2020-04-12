@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-4">
                     {% if wine.filename %}
-                        <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('medium') }}"
+                        <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('thumb') }}"
                              alt="card-img-top" style="width: 100%; height: auto">
                     {% else %}
                         <img src="{{ '/images/wines/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top"

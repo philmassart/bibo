@@ -23,6 +23,7 @@ use Dompdf\Options;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Twig\Environment;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 
 
 class WineController extends AbstractController
@@ -164,5 +165,46 @@ class WineController extends AbstractController
         );
     }
 
+    /**
+     * @Route("/stat", name="stat")
+     * @return type
+     */
+    public function statregion()
+{
+        $wines = $this->getDoctrine()->getRepository(Wine::class)->findAll();
+        
+         $nbregion = 0;
+ 
+    foreach ($wines as $wine) {
+        $nbregion += $wine->getNbBottle();
+    }
+        
+    $pieChart = new PieChart();
+    $pieChart->getData()->setArrayToDataTable(
+        [['Region', 'Number'],
+         ['Alsace',    $nbregion ],
+         ['Beaujolais',     0],
+         ['Bordeaux',      15],
+         ['Bourgogne',  25],
+         ['Champagne', 3],
+         ['Jura-Savoie',    18],
+         ['Languedox-Roussillon',    0],
+         ['Loire',    1],
+         ['Provence-Corse',    0],
+         ['Rhône',    5],
+         ['Sud-Ouest',    1],
+        ]
+    );
+    $pieChart->getOptions()->setTitle('Vins par région');
+    $pieChart->getOptions()->setHeight(500);
+    $pieChart->getOptions()->setWidth(900);
+    $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+    $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+    $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+    $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+    $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+    return $this->render('wine/stat.html.twig', array('piechart' => $pieChart));
+}
 
 }

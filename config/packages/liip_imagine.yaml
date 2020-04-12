@@ -2,11 +2,13 @@
 liip_imagine:
     filter_sets:
         thumb:
-            quality: 75
+            quality: 80
             filters:
                 thumbnail:
-                    size: [360, 230]
+                    size: [350, 230]
                     mode: outbound
+                    allow_upscale: true
+                    allow_downscale: true
         medium:
             quality: 75
             filters:

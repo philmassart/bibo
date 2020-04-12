@@ -38,6 +38,7 @@
         "vich/uploader-bundle": "^1.13"
     },
     "require-dev": {
+        "cmen/google-charts-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",

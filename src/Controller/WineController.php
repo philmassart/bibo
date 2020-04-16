@@ -101,22 +101,37 @@ class WineController extends AbstractController
     /**
      * @Route("/listp", name="wine_list", methods={"GET"})
      */
-    public function listp(WineRepository $repository): Response
+    public function listp(RegionRepository $regionRepository): Response
     {
+
+
+        $regions = $regionRepository->findBy([], ["name" => "ASC"]);
+
+        $totalBottles = 0;
+        $totalPrices = 0;
+        foreach($regions as $region)
+        {
+            $totalBottles += $region->getTotalBottles();
+            $totalPrices += $region->getTotalPrices(true);
+        }
 
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('defaultFont', 'Times');
+//        $pdfOptions->set('isRemoteEnabled', true);
+//        $pdfOptions->set('isHtml5ParserEnabled', true);
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
-        $wines = $repository->findAll();
+        $regions = $regionRepository->findBy([], ["name" => "ASC"]);
 
 
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('wine/listp.html.twig',[
-            'wines' => $wines,
+        $html = $this->renderView('wine/snappy.html.twig',[
+            'regions' => $regions,
+            'totalBottles' => $totalBottles,
+            'totalPrices' => $totalPrices
         ]);
 
         // Load HTML to Dompdf

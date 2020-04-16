@@ -18,9 +18,10 @@
             <td>{{ wine.name }}</td>
             <td style="text-align: center">{{ wine.year }}</td>
             <td>{{ wine.appellation.name }}</td>
-            <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"
-                                                alt="card-img-top"
-                                                style=" height: 35px; width: auto;"></td>
+{#            <td style="text-align: center"><img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}"#}
+{#                                                alt="card-img-top"#}
+{#                                                style=" height: 35px; width: auto;"></td>#}
+            <td>{{ wine.color|trans }}</td>
             <td>
                 {% for grape in wine.grapes %}
                     {{ grape.name }}

@@ -1,6 +1,6 @@
 {
     "cmen/google-charts-bundle": {
-        "version": "dev-master"
+        "version": "3.2.1"
     },
     "cocur/slugify": {
         "version": "v4.0.0"

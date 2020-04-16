@@ -5,6 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "cmen/google-charts-bundle": "^3.2",
         "cocur/slugify": "^4.0",
         "dompdf/dompdf": "^0.8.5",
         "fzaninotto/faker": "^1.9",
@@ -38,7 +39,6 @@
         "vich/uploader-bundle": "^1.13"
     },
     "require-dev": {
-        "cmen/google-charts-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",

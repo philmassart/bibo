@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Feature;
 use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
@@ -72,6 +73,19 @@ class WineRepository extends ServiceEntityRepository
                 $query
                     ->leftJoin('w.grapes', 'w_'.$i);
                 $whereOr .= '(w_'.$i.'.id = '.$grape->getId().') OR ';
+            }
+            $query->andWhere(substr($whereOr, 0, -4).')');
+        }
+
+        if ($search->getFeatures()->count() > 0) {
+            $i = 0;
+            $whereOr = '(';
+            /** @var Feature $feature */
+            foreach ($search->getFeatures() as $feature) {
+                $i++;
+                $query
+                    ->leftJoin('w.features', 'w_'.$i);
+                $whereOr .= '(w_'.$i.'.id = '.$feature->getId().') OR ';
             }
             $query->andWhere(substr($whereOr, 0, -4).')');
         }

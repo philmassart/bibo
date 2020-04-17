@@ -3,10 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Appellation;
+use App\Entity\Feature;
 use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
 use App\Repository\AppellationRepository;
+use App\Repository\FeatureRepository;
 use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -61,6 +63,16 @@ class WineSearchType extends AbstractType
                 'placeholder' => 'Couleur',
                 'required' => false,
                 'label' => false,
+            ])
+            ->add('features', EntityType::class, [
+                'required' => false,
+                'label' => "Caractéristiques",
+                'class' => Feature::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'query_builder' => function (FeatureRepository $featureRepository) {
+                    return $featureRepository->myFindAllBuilder();
+                }
             ])
             ->add('name', TextType::class, [
                 "required" => false,

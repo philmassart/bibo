@@ -9,6 +9,7 @@ form:
   color: Couleur
   alcohol: Alcool
   grapes: Cépages
+  features: Caractéristiques
   imagefile: Étiquette
   price: Prix
   description: Description

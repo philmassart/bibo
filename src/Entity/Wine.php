@@ -116,10 +116,16 @@ class Wine
      */
     private $nbbottle;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Feature", inversedBy="wines")
+     */
+    private $features;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
+        $this->features = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -358,6 +364,34 @@ class Wine
     public function setNbBottle(int $nbbottle): self
     {
         $this->nbbottle = $nbbottle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Feature[]
+     */
+    public function getFeatures(): Collection
+    {
+        return $this->features;
+    }
+
+    public function addFeature(Feature $feature): self
+    {
+        if (!$this->features->contains($feature)) {
+            $this->features[] = $feature;
+            $feature->addWine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFeature(Feature $feature): self
+    {
+        if ($this->features->contains($feature)) {
+            $this->features->removeElement($feature);
+            $feature->removeWine($this);
+        }
 
         return $this;
     }

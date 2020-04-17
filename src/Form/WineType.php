@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\Appellation;
 use App\Entity\Container;
+use App\Entity\Feature;
 use App\Entity\Grape;
 use App\Entity\Wine;
 use App\Repository\AppellationRepository;
 use App\Repository\ContainerRepository;
+use App\Repository\FeatureRepository;
 use App\Repository\GrapeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -38,6 +40,16 @@ class WineType extends AbstractType
             ->add('color', ChoiceType::class, [
                 'label' => "form.color",
                 'choices' => Wine::COLOR
+            ])
+            ->add('features', EntityType::class, [
+                'label' => "form.features",
+                'class' => Feature::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'query_builder' => function (FeatureRepository $featureRepository) {
+                    return $featureRepository->myFindAllBuilder();
+                }
             ])
             ->add('grapes', EntityType::class, [
                 'label' => "form.grapes",

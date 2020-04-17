@@ -33,7 +33,7 @@ class AdminWineController extends AbstractController
      */
     public function index()
     {
-        $wines = $this->repository->findAll();
+        $wines = $this->repository->myFindAll();
         return $this->render('admin/wine/index.html.twig', compact('wines'));
     }
 

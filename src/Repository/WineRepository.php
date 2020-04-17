@@ -138,6 +138,26 @@ class WineRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * @return mixed
+     */
+    public function myFindAll()
+    {
+        return $this->myFindAllBuilder()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function myFindAllBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('g')
+            ->select('g')
+            ->orderBy('g.name', 'ASC');
+    }
+
 }
 
 

@@ -30,6 +30,12 @@ class WineSearch
      */
     private $features;
 
+
+    /**
+     * @var ArrayCollection
+     */
+    private $pairings;
+
     /**
      * @var Appellation
      */
@@ -50,6 +56,7 @@ class WineSearch
     {
         $this->grapes = new ArrayCollection();
         $this->features = new ArrayCollection();
+        $this->pairings = new ArrayCollection();
     }
 
 
@@ -175,6 +182,24 @@ class WineSearch
     public function setFeatures(ArrayCollection $features): WineSearch
     {
         $this->features = $features;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPairings(): ArrayCollection
+    {
+        return $this->pairings;
+    }
+
+    /**
+     * @param ArrayCollection $pairings
+     * @return WineSearch
+     */
+    public function setPairings(ArrayCollection $pairings): WineSearch
+    {
+        $this->pairings = $pairings;
         return $this;
     }
 

@@ -121,11 +121,17 @@ class Wine
      */
     private $features;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Pairing", inversedBy="wines")
+     */
+    private $pairings;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
         $this->features = new ArrayCollection();
+        $this->pairings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -391,6 +397,34 @@ class Wine
         if ($this->features->contains($feature)) {
             $this->features->removeElement($feature);
             $feature->removeWine($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pairing[]
+     */
+    public function getPairings(): Collection
+    {
+        return $this->pairings;
+    }
+
+    public function addPairing(Pairing $pairing): self
+    {
+        if (!$this->pairings->contains($pairing)) {
+            $this->pairings[] = $pairing;
+            $pairing->addWine($this);
+        }
+
+        return $this;
+    }
+
+    public function removePairing(Pairing $pairing): self
+    {
+        if ($this->pairings->contains($pairing)) {
+            $this->pairings->removeElement($pairing);
+            $pairing->removeWine($this);
         }
 
         return $this;

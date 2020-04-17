@@ -41,7 +41,7 @@
 
                     <tr>
                         <td>Appellation</td>
-                        <td>{{ wine.appellation.name }}</td>
+                        <td>{{ wine.appellation.name }} ({{ wine.appellation.region.name }})</td>
                     </tr>
                     <tr>
                         <td>Couleur</td>
@@ -65,23 +65,31 @@
                         <td>Producteur (pas encore implémenté</td>
                         <td></td>
                     </tr>
+                    <tr>
+                        <td>Description </td>
+                        <td>{{ wine.description }}</td>
+                    </tr>
                 </table>
             </div>
 
             <div class="col-md-4">
-
-                <h2>Région</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">{{ wine.appellation.region.name }} </li>
-                </ul>
-                <h2>Appellation</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">{{ wine.appellation.name }}</li>
-                </ul>
                 <h2>Cépages</h2>
                 <ul class="list-group">
                     {% for grape in wine.grapes %}
                         <li class="list-group-item">{{ grape.name }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Caractéristiques</h2>
+                <ul class="list-group">
+                    {% for feature in wine.features %}
+                        <li class="list-group-item">{{ feature.name }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h2>Associations</h2>
+                <ul class="list-group">
+                    {% for pairing in wine.pairings %}
+                        <li class="list-group-item">{{ pairing.name }}</li>
                     {% endfor %}
                 </ul>
 

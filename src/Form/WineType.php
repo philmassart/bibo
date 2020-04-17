@@ -6,11 +6,13 @@ use App\Entity\Appellation;
 use App\Entity\Container;
 use App\Entity\Feature;
 use App\Entity\Grape;
+use App\Entity\Pairing;
 use App\Entity\Wine;
 use App\Repository\AppellationRepository;
 use App\Repository\ContainerRepository;
 use App\Repository\FeatureRepository;
 use App\Repository\GrapeRepository;
+use App\Repository\PairingRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -49,6 +51,16 @@ class WineType extends AbstractType
                 'multiple' => true,
                 'query_builder' => function (FeatureRepository $featureRepository) {
                     return $featureRepository->myFindAllBuilder();
+                }
+            ])
+            ->add('pairings', EntityType::class, [
+                'label' => "form.pairings",
+                'class' => Pairing::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'query_builder' => function (PairingRepository $pairingRepository) {
+                    return $pairingRepository->myFindAllBuilder();
                 }
             ])
             ->add('grapes', EntityType::class, [

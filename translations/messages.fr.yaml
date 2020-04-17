@@ -10,6 +10,7 @@ form:
   alcohol: Alcool
   grapes: Cépages
   features: Caractéristiques
+  pairings: Associations
   imagefile: Étiquette
   price: Prix
   description: Description
@@ -20,9 +21,9 @@ form:
 
 wine:
   color:
-    rose: rosé
-    red: rouge
-    white: blanc
+    rose: Rosé
+    red: Rouge
+    white: Blanc
 
 region:
   country:

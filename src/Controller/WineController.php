@@ -45,7 +45,7 @@ class WineController extends AbstractController
     }
 
     /**
-     * @Route("/vins", name="wine.index")
+     * @Route("/wines", name="wine.index")
      * @return Response
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
@@ -67,7 +67,7 @@ class WineController extends AbstractController
     }
 
     /**
-     * @Route("/vins/{slug}-{id}", name="wine.show", requirements={"slug": "[a-z0-9\-]*" })
+     * @Route("/wines/{slug}-{id}", name="wine.show", requirements={"slug": "[a-z0-9\-]*" })
      * @param Wine $wine
      * @return Response
      *
@@ -99,7 +99,7 @@ class WineController extends AbstractController
 
 
     /**
-     * @Route("/listp", name="wine_list", methods={"GET"})
+     * @Route("/listp", name="wine.list", methods={"GET"})
      */
     public function listp(RegionRepository $regionRepository): Response
     {

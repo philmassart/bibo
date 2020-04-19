@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+<div class="form-row align-items-end">
+    <div class="col">
+        {{ form_row(form.name) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.color) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.appellation) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.minYear) }}
+    </div>
+</div>
+<div class="form-row align-items-end">
+    <div class="col">
+        {{ form_row(form.grapes) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.features) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.pairings) }}
+    </div>
+
+    <div class="col">
+        {{ form_row(form.maxPrice) }}
+    </div>
+</div>
+
+<div class="form-row align-items-end">
+    <div class="col">
+        <div class="form-groupe">
+            <button class="btn btn-primary">Rechercher</button>
+        </div>
+    </div>
+    <a href="{{ path('wine.list') }}" class="btn btn-primary" target="_blank">Imprimer tous les vins</a>
+</div>
+
+{{ form_end(form) }}

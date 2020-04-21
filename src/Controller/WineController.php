@@ -57,7 +57,7 @@ class WineController extends AbstractController
         $wines = $paginator->paginate(
             $this->repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1),
-            20
+            12
         );
         return $this->render('wine/index.html.twig', [
             'current_menu' => 'wines',

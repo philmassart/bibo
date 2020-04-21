@@ -3,55 +3,57 @@
 {% block title %}Gérer les contenants{% endblock %}
 
 {% block body %}
+    <div id="content">
+        <div class="container mt-4">
+            <h1>Gérer les contenants</h1>
 
-<div class="container mt-4">
-    <h1>Gérer les contenants</h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
+            <div class="div text-right">
+                <a href="{{ path('container.new') }}" class="btn btn-primary">Créer un nouveau contenant</a>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Capacité</th>
+                    <th>Unité</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for container in containers %}
+                    <tr>
+                        <td>{{ container.name }}</td>
+                        <td>{{ container.capacity|number_format(1, ',', ' ') }}</td>
+                        <td>{{ container.unit }}</td>
+                        <td width="50%">
+                            <div>
+                                <a href="{{ path ('container.edit', {id: container.id}) }}" class="btn btn-secondary">Editer</a>
+                                <form method="post" action="{{ path('container.delete', {id: container.id}) }}"
+                                      style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token"
+                                           value="{{ csrf_token('delete' ~ container.id) }}">
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-    {% endfor %}
-
-    <div class="div text-right">
-        <a href="{{ path('container.new') }}" class="btn btn-primary">Créer un nouveau contenant</a>
     </div>
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Capacité</th>
-                <th>Unité</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for container in containers %}
-            <tr>
-                <td>{{ container.name }}</td>
-                <td>{{ container.capacity|number_format(1, ',', ' ') }}</td>
-                <td>{{ container.unit }}</td>
-                <td width="50%">
-                    <div >
-                        <a href="{{path ('container.edit', {id: container.id}) }}" class="btn btn-secondary">Editer</a>
-                        <form method="post" action="{{ path('container.delete', {id: container.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ container.id) }}">
-                            <button class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
 
 
 {% endblock %}

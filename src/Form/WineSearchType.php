@@ -51,8 +51,8 @@ class WineSearchType extends AbstractType
             ])
             ->add('appellation', EntityType::class, [
                 'required' => false,
-                'placeholder' => 'Appellation',
-                'label' => false,
+                'placeholder' => ' ',
+                'label' => 'Appellation',
                 'class' => Appellation::class,
                 'choice_label' => 'name',
                 'multiple' => false,
@@ -62,9 +62,9 @@ class WineSearchType extends AbstractType
             ])
             ->add('color', ChoiceType::class, [
                 "choices" => array_combine(Wine::COLOR, Wine::COLOR),
-                'placeholder' => 'Couleur',
+                'placeholder' => ' ',
                 'required' => false,
-                'label' => false,
+                'label' => 'Couleur',
             ])
             ->add('features', EntityType::class, [
                 'required' => false,

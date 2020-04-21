@@ -37,7 +37,8 @@ class AppellationRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->select('a')
-            ->orderBy('a.name', 'ASC');
+            ->innerJoin('a.region', 'r')
+            ->orderBy('r.name', 'ASC');
     }
 
     // /**

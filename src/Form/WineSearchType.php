@@ -51,18 +51,24 @@ class WineSearchType extends AbstractType
             ])
             ->add('appellation', EntityType::class, [
                 'required' => false,
-                'placeholder' => ' ',
+                'placeholder' => '(toutes)',
                 'label' => 'Appellation',
                 'class' => Appellation::class,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function (AppellationRepository $appellation) {
+                'query_builder' => function (AppellationRepository $appellation)
+                    {
                     return $appellation->myFindAllAppelBuilder();
-                }
+                     },
+                'group_by' => function (Appellation $appellation)
+                    {
+                        return $appellation->getRegion()->getName();
+                    },
+
             ])
             ->add('color', ChoiceType::class, [
                 "choices" => array_combine(Wine::COLOR, Wine::COLOR),
-                'placeholder' => ' ',
+                'placeholder' => '(toutes)',
                 'required' => false,
                 'label' => 'Couleur',
             ])

@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="content">
 
-    <div class="container">
-        <h1>Créer un nouveau vin</h1>
-        {{ include ('admin/wine/_form.html.twig', {button: 'Créer'}) }}
+        <div class="container">
+            <h1>Créer un nouveau vin</h1>
+            {{ include ('admin/wine/_form.html.twig', {button: 'Créer'}) }}
 
+        </div>
     </div>
-
 {% endblock %}
 
 

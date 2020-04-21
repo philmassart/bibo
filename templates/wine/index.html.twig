@@ -1,26 +1,90 @@
 {% extends 'base.html.twig' %}
 
 {% block title 'Tous les vins' %}
+{% block stylesheets %}
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 
+{% endblock %}
 {% block body %}
-    <div class="jumbotron">
-        <div class="container">
-            {% include'wine/_filter.html.twig' %}
-        </div>
-    </div>
+    <div class="wrapper">
+        {#    <div class="jumbotron">#}
+        <nav id="sidebar">
+
+            <div class="sidebar-header">
+                <h3>Mes vins</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>??????</p>
+
+{#                <li>#}
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle">Administration</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <a href="{{ path('admin.wine.index') }}" class="nav-link">Admin</a>
+                        <li>
+                            <a href="{{ path('appellation.index') }}" class="nav-link">Appellations</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('region.index') }}" class="nav-link">Régions</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('grape.index') }}" class="nav-link">Cépages</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('feature.index') }}" class="nav-link">Caractéristiques</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pairing.index') }}" class="nav-link">Associations</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('container.index') }}" class="nav-link">Contenants</a>
+                        </li>
+                    </ul>
+                    {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.color) }}
+                    {{ form_row(form.appellation) }}
+                    {{ form_row(form.grapes) }}
+                    {{ form_row(form.features) }}
+                    {{ form_row(form.pairings) }}
+                    {{ form_row(form.minYear) }}
+                    {{ form_row(form.maxPrice) }}
+                    {{ form_rest(form) }}
+
+                    <div class="form-row align-items-end">
+                        <div class="col">
+                            <div class="form-groupe">
+                                <button class="btn btn-primary">Rechercher</button>
+                            </div>
+                        </div>
+                        <a href="{{ path('wine.list') }}" class="btn btn-primary" target="_blank">Imprimer tous les
+                            vins</a>
+                    </div>
+                    {{ form_end(form) }}
+{#                </li>#}
+            </ul>
+            {#            {% include'wine/_filter.html.twig' %}#}
+        </nav>
+        {#    </div>#}
 
 
-    <div class="container mt-4">
-        <h1>Voir tous les vins</h1>
-        <div class="row">
-            {% for wine in wines %}
-                <div class="col-md-4">
-                    {% include 'wine/_wine.html.twig' %}
-                </div>
-            {% endfor %}
-        </div>
-        <div class="pagination">
-            {{ knp_pagination_render(wines) }}
+        <div class="container mt-4">
+            <h1>Voir tous les vins</h1>
+            <div class="row">
+                {% for wine in wines %}
+                    <div class="col-md-4">
+                        {% include 'wine/_wine.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                {{ knp_pagination_render(wines) }}
+            </div>
         </div>
     </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
 {% endblock %}

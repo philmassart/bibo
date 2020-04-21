@@ -12,7 +12,7 @@ admin_lte:
         fixed_layout: false
         boxed_layout: false
         collapsed_sidebar: false
-        mini_sidebar: false
+        mini_sidebar: true
 
     knp_menu:
         enable: false

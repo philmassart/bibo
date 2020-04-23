@@ -15,6 +15,7 @@ form:
   price: Prix
   description: Description
   stock: En stock
+  location: Emplacement
   nbbottle: Nb. de bouteilles
   unit: Unité
 

@@ -29,7 +29,7 @@ class WineSearchType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Année minimale'
+                    'placeholder' => 'Année minimale',
                 ]
             ])
             ->add('maxPrice', IntegerType::class, [
@@ -95,6 +95,7 @@ class WineSearchType extends AbstractType
             ->add('name', TextType::class, [
                 "required" => false,
                 "label" => "Nom",
+                'attr' => array('style' => 'height:28px')
             ])
 
         ;

@@ -102,6 +102,9 @@ class WineType extends AbstractType
             ->add('price', null, [
                 'label' => "form.price"
             ])
+            ->add('location', null, [
+                'label' => "form.location"
+            ])
             ->add('imageFile', VichFileType::class, [
                 'label' => "form.imagefile",
                 'required' => false

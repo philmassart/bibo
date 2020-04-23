@@ -4,6 +4,7 @@
 
 
 {% block body %}
+<div id="content">
 
     <div class="jumbotron">
         <div class="container">
@@ -62,7 +63,11 @@
                         <td>{{ wine.nbbottle }}</td>
                     </tr>
                     <tr>
-                        <td>Producteur (pas encore implémenté</td>
+                        <td>Emplacement</td>
+                        <td>{{ wine.location }}</td>
+                    </tr>
+                    <tr>
+                        <td>Producteur (pas encore implémenté)</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -98,4 +103,5 @@
 
         </div>
     </div>
+</div>
 {% endblock %}

@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h1>Editer le contenant</h1>
-        {{ include ('container/_form.html.twig', {button: 'Editer'}) }}
+    <div id="content">
+
+        <div class="container">
+            <h1>Editer le contenant</h1>
+            {{ include ('container/_form.html.twig', {button: 'Editer'}) }}
+        </div>
     </div>
 {% endblock %}
 

@@ -26,6 +26,12 @@ class Wine
         'wine.color.rose' => 'wine.color.rose'
     ];
 
+    const WINEGROWING = [
+        'wine.growing.trad' => 'wine.growing.trad',
+        'wine.growing.bio' => 'wine.growing.bio',
+        'wine.growing.biodyn' => 'wine.growing.biodyn'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -130,6 +136,11 @@ class Wine
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $location;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $winegrowing = self::WINEGROWING['wine.growing.trad'];
 
     public function __construct()
     {
@@ -443,6 +454,23 @@ class Wine
     public function setLocation(?string $location): self
     {
         $this->location = $location;
+
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getWinegrowing(): ?string
+    {
+        return $this->winegrowing;
+    }
+    /**
+     * @param string $color
+     * @return $this
+     */
+    public function setWinegrowing(?string $winegrowing): self
+    {
+        $this->winegrowing = $winegrowing;
 
         return $this;
     }

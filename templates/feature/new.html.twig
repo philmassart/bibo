@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="content">
 
-    <div class="container">
-        <h1>Créer une nouvelle caractéristique</h1>
-        {{ include ('feature/_form.html.twig', {button: 'Créer'}) }}
+        <div class="container">
+            <h1>Créer une nouvelle caractéristique</h1>
+            {{ include ('feature/_form.html.twig', {button: 'Créer'}) }}
 
+        </div>
     </div>
 
 {% endblock %}

@@ -18,6 +18,8 @@ form:
   location: Emplacement
   nbbottle: Nb. de bouteilles
   unit: Unité
+  winegrowing: Viticulture
+
 
 
 wine:
@@ -25,6 +27,11 @@ wine:
     rose: Rosé
     red: Rouge
     white: Blanc
+  growing:
+    trad: Traditionnelle
+    bio: Biologique
+    biodyn: Biodynamie
+
 
 region:
   country:

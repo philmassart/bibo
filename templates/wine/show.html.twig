@@ -49,6 +49,10 @@
                         <td>{{ wine.color|trans|capitalize }}</td>
                     </tr>
                     <tr>
+                        <td>Viticulture</td>
+                        <td>{{ wine.winegrowing|default|trans }}</td>
+                    </tr>
+                    <tr>
                         <td>Alcool</td>
                         <td> {{ wine.alcohol|alcohol }} </td>
                     </tr>

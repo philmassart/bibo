@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="content">
 
-    <div class="container">
-        <h1>Créer une nouvelle region</h1>
-        {{ include ('region/_form.html.twig', {button: 'Créer'}) }}
+        <div class="container">
+            <h1>Créer une nouvelle region</h1>
+            {{ include ('region/_form.html.twig', {button: 'Créer'}) }}
 
+        </div>
     </div>
-
 {% endblock %}

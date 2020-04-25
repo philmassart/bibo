@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="content">
 
-    <div class="container">
-        <h1>Editer l'association</h1>
-        {{ include ('pairing/_form.html.twig', {button: 'Editer'}) }}
+        <div class="container">
+            <h1>Editer l'association</h1>
+            {{ include ('pairing/_form.html.twig', {button: 'Editer'}) }}
+        </div>
     </div>
-
 {% endblock %}
 
 {% block title %}

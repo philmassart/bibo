@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="content">
 
-    <div class="container">
-        <h1>Editer le cépage</h1>
-        {{ include ('grape/_form.html.twig', {button: 'Editer'}) }}
+        <div class="container">
+            <h1>Editer le cépage</h1>
+            {{ include ('grape/_form.html.twig', {button: 'Editer'}) }}
 
+        </div>
     </div>
-
 {% endblock %}
 
 {% block title %}

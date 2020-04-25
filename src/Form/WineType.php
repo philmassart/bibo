@@ -43,6 +43,10 @@ class WineType extends AbstractType
                 'label' => "form.color",
                 'choices' => Wine::COLOR
             ])
+            ->add('winegrowing', ChoiceType::class, [
+                'label' => "form.winegrowing",
+                'choices' => Wine::WINEGROWING
+            ])
             ->add('features', EntityType::class, [
                 'label' => "form.features",
                 'class' => Feature::class,

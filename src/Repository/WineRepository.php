@@ -116,6 +116,13 @@ class WineRepository extends ServiceEntityRepository
                 ->setParameter("color", $search->getColor());
         }
 
+
+        if ($search->getWinegrowing()) {
+            $query
+                ->andWhere("w.winegrowing = :winegrowing")
+                ->setParameter("winegrowing", $search->getWinegrowing());
+        }
+
         if ($search->getName())
         {
             $query->andWhere("w.name LIKE '%".$search->getName()."%'");

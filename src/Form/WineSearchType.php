@@ -72,6 +72,12 @@ class WineSearchType extends AbstractType
                 'required' => false,
                 'label' => 'Couleur',
             ])
+            ->add('winegrowing', ChoiceType::class, [
+                "choices" => array_combine(Wine::WINEGROWING, Wine::WINEGROWING),
+                'placeholder' => '(toutes)',
+                'required' => false,
+                'label' => 'Viticulture',
+            ])
             ->add('features', EntityType::class, [
                 'required' => false,
                 'label' => "Caractéristiques",

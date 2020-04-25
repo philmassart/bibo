@@ -49,6 +49,11 @@ class WineSearch
     /**
      * @var string|null
      */
+    private $winegrowing;
+
+    /**
+     * @var string|null
+     */
     private $name;
 
 
@@ -148,6 +153,23 @@ class WineSearch
     public function setColor(string $color): WineSearch
     {
         $this->color = $color;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getWinegrowing(): ?string
+    {
+        return $this->winegrowing;
+    }
+
+    /**
+     * @param string|null $winegrowing
+     * @return WineSearch
+     */
+    public function setWinegrowing(string $winegrowing): WineSearch
+    {
+        $this->winegrowing = $winegrowing;
         return $this;
     }
 

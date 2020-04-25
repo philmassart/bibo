@@ -216,6 +216,23 @@ class Wine
 
         return $this;
     }
+    /**
+     * @return string|null
+     */
+    public function getWinegrowing(): ?string
+    {
+        return $this->winegrowing;
+    }
+    /**
+     * @param string $winegrowing
+     * @return $this
+     */
+    public function setWinegrowing(?string $winegrowing): self
+    {
+        $this->winegrowing = $winegrowing;
+
+        return $this;
+    }
 
     public function getStock(): ?bool
     {
@@ -454,23 +471,6 @@ class Wine
     public function setLocation(?string $location): self
     {
         $this->location = $location;
-
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getWinegrowing(): ?string
-    {
-        return $this->winegrowing;
-    }
-    /**
-     * @param string $color
-     * @return $this
-     */
-    public function setWinegrowing(?string $winegrowing): self
-    {
-        $this->winegrowing = $winegrowing;
 
         return $this;
     }

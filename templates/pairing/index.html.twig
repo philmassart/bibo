@@ -12,8 +12,11 @@
                 <div class="alert alert-success">
                     {{ message }}
                 </div>
-
             {% endfor %}
+
+            <div class="div text-right">
+                <a href="{{ path('pairing.new') }}" class="btn btn-primary">Créer une nouvelle association</a>
+            </div>
 
             <table class="table table-striped">
                 <thead>
@@ -40,9 +43,6 @@
                 </tbody>
             </table>
 
-            <div class="div text-right">
-                <a href="{{ path('pairing.new') }}" class="btn btn-primary">Créer une nouvelle association</a>
-            </div>
         </div>
     </div>
 

@@ -1,0 +1,3 @@
+#!/bin/sh
+php73 bin/console c:c -e prod
+sudo chmod 777 -R var

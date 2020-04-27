@@ -32,6 +32,9 @@ wine:
     bio: Biologique
     biodyn: Biodynamie
 
+movement:
+  in: Ajouter un vin
+  out: Déguster un vin
 
 region:
   country:

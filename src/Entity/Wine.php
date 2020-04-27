@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -78,9 +79,9 @@ class Wine
     private $color = self::COLOR['wine.color.white'];
 
     /**
-     * @ORM\Column(type="boolean", options={"default": true})
+     * @ORM\Column(type="integer")
      */
-    private $stock = true;
+    private $stock;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -142,12 +143,18 @@ class Wine
      */
     private $winegrowing = self::WINEGROWING['wine.growing.trad'];
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stock", mappedBy="wine")
+     */
+    private $stocks;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->grapes = new ArrayCollection();
         $this->features = new ArrayCollection();
         $this->pairings = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,12 +241,12 @@ class Wine
         return $this;
     }
 
-    public function getStock(): ?bool
+    public function getStock(): int
     {
         return $this->stock;
     }
 
-    public function setStock(bool $stock): self
+    public function setStock(int $stock): self
     {
         $this->stock = $stock;
 
@@ -471,6 +478,37 @@ class Wine
     public function setLocation(?string $location): self
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stock[]
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): self
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks[] = $stock;
+            $stock->setWine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): self
+    {
+        if ($this->stocks->contains($stock)) {
+            $this->stocks->removeElement($stock);
+            // set the owning side to null (unless already changed)
+            if ($stock->getWine() === $this) {
+                $stock->setWine(null);
+            }
+        }
 
         return $this;
     }

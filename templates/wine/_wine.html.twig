@@ -16,6 +16,7 @@
 
         <img src="{{ './images/wines/' ~ wine.color ~ '.jpg' }}" alt="card-img-top"
              style="width: 10%; height: auto">
+        <a href="{{ path('stock.movement',{id: wine.id}) }}" class="btn btn-default">+</a>
 
         <div class="text-primary" style="font-size:2rem; font-weight: bold;">
             {#  {{ wine.formattedPrice }} €#}

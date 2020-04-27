@@ -1,3 +1,4 @@
 #!/bin/sh
 php73 bin/console c:c -e prod
+php73 bin/console d:s:u -f
 sudo chmod 777 -R var

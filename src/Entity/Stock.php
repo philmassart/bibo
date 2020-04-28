@@ -41,6 +41,11 @@ class Stock
      */
     private $movement = self::MOVEMENT['movement.out'];
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $comment;
+
 
     public function __construct()
     {
@@ -96,6 +101,18 @@ class Stock
     public function setMovement(string $movement): self
     {
         $this->movement = $movement;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }

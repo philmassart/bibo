@@ -13,9 +13,15 @@ class StockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantity')
+            ->add('quantity', null, [
+                'label' => "form.quantity"
+            ])
             ->add('movement', ChoiceType::class, [
-                'choices' => Stock::MOVEMENT
+                'choices' => Stock::MOVEMENT,
+                'label' => "form.movement"
+            ])
+            ->add('comment', null, [
+                'label' => "form.comment"
             ])
         ;
     }

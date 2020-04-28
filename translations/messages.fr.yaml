@@ -36,8 +36,8 @@ wine:
     biodyn: Biodynamie
 
 movement:
-  in: Ajouter un vin
-  out: Déguster un vin
+  in: Ajout
+  out: Dégustation
 
 region:
   country:

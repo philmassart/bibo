@@ -30,3 +30,9 @@ services:
         tags:
         - { name: doctrine.event_subscriber }
 
+
+    App\Listener\StockListener:
+        class: App\Listener\StockListener
+        tags:
+            - {name: doctrine.event_listener, event: prePersist}
+            - {name: doctrine.event_listener, event: preUpdate}

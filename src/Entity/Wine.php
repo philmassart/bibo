@@ -144,7 +144,7 @@ class Wine
     private $winegrowing = self::WINEGROWING['wine.growing.trad'];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Stock", mappedBy="wine")
+     * @ORM\OneToMany(targetEntity="App\Entity\Stock", mappedBy="wine", cascade={"remove", "persist"})
      */
     private $stocks;
 

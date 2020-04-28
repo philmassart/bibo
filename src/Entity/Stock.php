@@ -46,6 +46,11 @@ class Stock
      */
     private $comment;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldQuantity;
+
 
     public function __construct()
     {
@@ -113,6 +118,18 @@ class Stock
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getOldQuantity(): ?int
+    {
+        return $this->oldQuantity;
+    }
+
+    public function setOldQuantity(?int $oldQuantity): self
+    {
+        $this->oldQuantity = $oldQuantity;
 
         return $this;
     }

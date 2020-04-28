@@ -110,10 +110,11 @@
 
         </div>
         <h2>Historique du stock</h2>
-
+        <a href="{{ path('stock.movement',{id: wine.id}) }}" class="btn btn-light" >+ / -</a>
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Date</th>
                 <th>Nombre</th>
                 <th>In / Out</th>
@@ -123,13 +124,14 @@
             <tbody>
             {% for movement in wine.stocks %}
                 <tr>
+                    <td>{{ movement.id }} </td>
                     <td>{{ movement.createdAt|date('d-m-Y') }} </td>
                     <td> {{ movement.quantity }} </td>
                     <td>  {{ movement.movement|trans }}</td>
                     <td> {{ movement.comment }}</td>
                     <td>
-                        <a href="{{ path ('stock.movement', {id: wine.id}) }}" class="btn btn-secondary">Editer</a>
-                        <form method="post" action="{{ path('stock.movement', {id: wine.id}) }}"
+                        <a href="{{ path ('movement.edit', {id: movement.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('movement.delete', {id: movement.id}) }}"
                               style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movement.id) }}">

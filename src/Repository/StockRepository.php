@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Stock;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Stock|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +20,26 @@ class StockRepository extends ServiceEntityRepository
         parent::__construct($registry, Stock::class);
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function myFindAll()
+    {
+        return $this->myFindAllBuilder()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function myFindAllBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s')
+            ->orderBy('s.id', 'ASC');
+    }
     // /**
     //  * @return Stock[] Returns an array of Stock objects
     //  */

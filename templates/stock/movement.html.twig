@@ -4,14 +4,20 @@
     <div id="content">
 
         <div class="container mt-4">
-            <h1>Gestion du stock<small>{{ wine.name }}</small> </h1>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
+            
+                <div class="row">
+                    <div class="col">
+                    <h1>Gestion du stock</h1>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                            <button class="btn btn-primary" type="submit">Valider</button>
+                        {{ form_end(form) }}
+                    </div>
 
-
-            <button class="btn btn-primary" type="submit">Valider</button>
-            {{ form_end(form) }}
-
+                    <div class="col">
+                        {% include 'stock/_movement.html.twig' %}
+                     </div>
+                </div>
         </div>
     </div>
 {% endblock %}

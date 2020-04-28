@@ -1,0 +1,21 @@
+<div class="card mb-4">
+    {% if wine.filename %}
+        <img src="{{ vich_uploader_asset(wine, 'imageFile') | imagine_filter('thumb') }}" alt="card-img-top"
+             >
+    {% else %}
+        <img src="{{ '/images/wines/empty.jpg' }}" alt="card-img-top"
+             style="width: 100%; height: auto">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="{{ path('wine.show', {slug: wine.slug, id: wine.id}) }}">
+                {{ wine.name }}
+            </a>
+        </h5>
+      <p class="card-text">{{ wine.appellation.name }} {{ wine.year }}</p>
+
+        <img src="{{ '/bibo/public/images/wines/' ~ wine.color ~ '.jpg' }}" alt="card-img-top"
+             style="width: 10%; height: auto">
+
+    </div>
+</div>

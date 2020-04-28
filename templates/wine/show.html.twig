@@ -110,7 +110,7 @@
 
         </div>
         <h2>Historique du stock</h2>
-        <a href="{{ path('stock.movement',{id: wine.id}) }}" class="btn btn-light" >+ / -</a>
+        <a href="{{ path('stock.movement',{id: wine.id}) }}" class="btn btn-light float-right" >+ / -</a>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -119,6 +119,7 @@
                 <th>Nombre</th>
                 <th>In / Out</th>
                 <th>Commentaire</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>

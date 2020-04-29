@@ -106,7 +106,7 @@ class Appellation
         $return = 0;
         foreach($this->getWines() as $wine)
         {
-            $return += $wine->getNbBottle();
+            $return += $wine->getStock();
         }
 
         return $return;
@@ -119,7 +119,7 @@ class Appellation
         {
             if ($byBottle)
             {
-                $return += $wine->getPrice() * $wine->getNbBottle();
+                $return += $wine->getPrice() * $wine->getStock();
             }
             else
             {

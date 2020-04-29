@@ -22,16 +22,35 @@ class StockListener
         $this->countStock($args);
     }
 
-    private function countStock(LifecycleEventArgs $args)
+    public function preRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        $em = $args->getEntityManager();
 
         if (!$entity instanceof Stock)
         {
             return;
         }
 
+        $em = $args->getEntityManager();
+        /** @var Stock $stock */
+        $stock = $entity;
+        $wine = $stock->getWine();
+
+        $actualStock = $wine->getStock();
+        $wine->setStock($actualStock - $stock->getQuantity());
+        $em->persist($wine);
+    }
+
+    private function countStock(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        if (!$entity instanceof Stock)
+        {
+            return;
+        }
+
+        $em = $args->getEntityManager();
         /** @var Stock $stock */
         $stock = $entity;
         $wine = $stock->getWine();

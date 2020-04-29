@@ -37,7 +37,16 @@ class StockListener
         $wine = $stock->getWine();
 
         $actualStock = $wine->getStock();
-        $wine->setStock($actualStock - $stock->getQuantity());
+        if ($stock->getMovement() == Stock::MOVEMENT['movement.in'])
+        {
+            $newStock = $actualStock - $stock->getQuantity();
+        }
+        else
+        {
+            $newStock = $actualStock + $stock->getQuantity();
+        }
+
+        $wine->setStock($newStock);
         $em->persist($wine);
     }
 

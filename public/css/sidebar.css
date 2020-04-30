@@ -214,3 +214,8 @@ a.article:hover {
     color: #ffffff;
     border: 1px solid #dddddd;
 }
+
+.myfield {
+    width: 200px;
+    height: 28px;
+}

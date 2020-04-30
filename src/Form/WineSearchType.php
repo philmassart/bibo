@@ -41,10 +41,15 @@ class WineSearchType extends AbstractType
             ])
             ->add('grapes', EntityType::class, [
                 'required' => false,
-                'label' => "Cépages",
+                'placeholder' => 'Cépages',
+                'empty_data' => 'Cépages',
+                'label' => false,
                 'class' => Grape::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'attr' => [
+                    'class' => 'myfield'
+                ],
                 'query_builder' => function (GrapeRepository $grapeRepository) {
                     return $grapeRepository->myFindAllBuilder();
                 }
@@ -56,6 +61,9 @@ class WineSearchType extends AbstractType
                 'class' => Appellation::class,
                 'choice_label' => 'name',
                 'multiple' => false,
+                'attr' => [
+                    'class' => 'myfield'
+                ],
                 'query_builder' => function (AppellationRepository $appellation)
                     {
                     return $appellation->myFindAllAppelBuilder();
@@ -71,12 +79,20 @@ class WineSearchType extends AbstractType
                 'placeholder' => '(toutes)',
                 'required' => false,
                 'label' => 'Couleur',
+                'attr' => [
+                    'class' => 'myfield'
+                ],
+
             ])
             ->add('winegrowing', ChoiceType::class, [
                 "choices" => array_combine(Wine::WINEGROWING, Wine::WINEGROWING),
                 'placeholder' => '(toutes)',
                 'required' => false,
                 'label' => 'Viticulture',
+                'attr' => [
+                    'class' => 'myfield'
+                ],
+
             ])
             ->add('features', EntityType::class, [
                 'required' => false,
@@ -84,6 +100,9 @@ class WineSearchType extends AbstractType
                 'class' => Feature::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'attr' => [
+                    'class' => 'myfield'
+                ],
                 'query_builder' => function (FeatureRepository $featureRepository) {
                     return $featureRepository->myFindAllBuilder();
                 }
@@ -94,14 +113,21 @@ class WineSearchType extends AbstractType
                 'class' => Pairing::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'attr' => [
+                    'class' => 'myfield'
+                ],
                 'query_builder' => function (PairingRepository $pairingRepository) {
                     return $pairingRepository->myFindAllBuilder();
                 }
             ])
             ->add('name', TextType::class, [
                 "required" => false,
-                "label" => "Nom",
-                'attr' => array('style' => 'height:28px')
+                'empty_data' => 'Nom',
+                "label" => false,
+                'attr' => [
+                    'class' => 'myfield'
+                    ]
+
             ])
 
         ;

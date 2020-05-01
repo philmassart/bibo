@@ -241,7 +241,7 @@ class Wine
         return $this;
     }
 
-    public function getStock(): int
+    public function getStock(): ?int
     {
         return $this->stock;
     }

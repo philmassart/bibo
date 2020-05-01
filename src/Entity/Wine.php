@@ -79,7 +79,7 @@ class Wine
     private $color = self::COLOR['wine.color.white'];
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $stock;
 
@@ -119,7 +119,7 @@ class Wine
     private $container;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $nbbottle;
 
@@ -246,7 +246,7 @@ class Wine
         return $this->stock;
     }
 
-    public function setStock(int $stock): self
+    public function setStock(?int $stock): self
     {
         $this->stock = $stock;
 
@@ -407,7 +407,7 @@ class Wine
         return $this->nbbottle;
     }
 
-    public function setNbBottle(int $nbbottle): self
+    public function setNbBottle(?int $nbbottle): self
     {
         $this->nbbottle = $nbbottle;
 

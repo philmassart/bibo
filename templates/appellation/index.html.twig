@@ -237,6 +237,24 @@
             </tr>
             </thead>
             <tbody>
+            <h3>Sicile</h3>
+            {% for appellation in appellation %}
+                {% if appellation.region.name == 'Sicile' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
             <div id="Espagne"><h2>Espagne</h2></div>
             <h3>Andalousie</h3>
             {% for appellation in appellation %}

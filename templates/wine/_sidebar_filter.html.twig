@@ -1,28 +1,37 @@
 {{ form_start(form) }}
 <div class="col-sm-10">
-    {{ form_row(form.name) }}
+    <li>Nom</li>
+    {{ form_widget(form.name) }}
 </div>
 <div class="col-sm-10">
-    {{ form_row(form.color) }}
+    <li>Couleur</li>
+    {{ form_widget(form.color) }}
 </div>
 <div class="col-sm-10">
-    {{ form_row(form.appellation) }}
+    <li>Appellation</li>
+    {{ form_widget(form.appellation) }}
 </div>
 <div class="col-sm-10">
-    {{ form_row(form.winegrowing) }}
+    <li>Viticulture</li>
+    {{ form_widget(form.winegrowing) }}
 </div>
+<hr>
 <div class="col-sm-10">
-    {{ form_row(form.grapes) }}
+    <li>Cépages</li>
+    {{ form_widget(form.grapes) }}
 </div>
 
 <div class="col-sm-10">
-    {{ form_row(form.features) }}
+    <li>Caractéristiques</li>
+    {{ form_widget(form.features) }}
 </div>
 <div class="col-sm-10">
-    {{ form_row(form.pairings) }}
+    <li>Associations</li>
+    {{ form_widget(form.pairings) }}
 </div>
+<hr>
 <div class="col-sm-10">
-    {{ form_row(form.minYear) }}
+        {{ form_row(form.minYear) }}
 </div>
 <div class="col-sm-10">
     {{ form_row(form.maxPrice) }}

@@ -30,13 +30,15 @@ class WineSearchType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Année minimale',
+                    'class' => 'myfield'
                 ]
             ])
             ->add('maxPrice', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Budget max'
+                    'placeholder' => 'Budget max',
+                    'class' => 'myfield'
                 ]
             ])
             ->add('grapes', EntityType::class, [

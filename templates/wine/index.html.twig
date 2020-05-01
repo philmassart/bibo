@@ -20,9 +20,10 @@
                 <p><a href="{{ path('wine.index') }}" class="nav-link">Vins en cave</a></p>
 
                 {% if app.user %}
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle" style="padding-left: 15px">Administration</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false"
+                   class="dropdown-toggle" style="padding-left: 15px">Administration</a></li>
+                <ul class="collapse list-unstyled" id="adminSubmenu">
                     <li>
                         <a href="{{ path('admin.wine.index') }}" class="nav-link">Admin</a>
                     </li>

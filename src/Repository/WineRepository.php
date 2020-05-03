@@ -146,8 +146,8 @@ class WineRepository extends ServiceEntityRepository
 
     private function findVisibleQuery(): QueryBuilder
     {
-        return $this->createQueryBuilder('w')
-            ->where('w.stock > 0');
+        return $this->createQueryBuilder('w');
+//            ->where('w.stock > 0');
     }
 
 

@@ -2,11 +2,17 @@
 
 namespace App\Entity;
 
+use App\Form\WineSearchType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class WineSearch
+class oldWineSearch
 {
+
+    /**
+     * @var boolean|null
+     */
+    private $isinStock;
 
     /**
      * @var int|null
@@ -75,9 +81,9 @@ class WineSearch
 
     /**
      * @param int|null $maxPrice
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setMaxPrice(int $maxPrice): WineSearch
+    public function setMaxPrice(?int $maxPrice): oldWineSearch
     {
         $this->maxPrice = $maxPrice;
         return $this;
@@ -93,9 +99,9 @@ class WineSearch
 
     /**
      * @param int|null $minYear
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setMinYear(int $minYear): WineSearch
+    public function setMinYear(?int $minYear): oldWineSearch
     {
         $this->minYear = $minYear;
         return $this;
@@ -111,9 +117,9 @@ class WineSearch
 
     /**
      * @param ArrayCollection $grapes
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setGrapes(ArrayCollection $grapes): WineSearch
+    public function setGrapes(ArrayCollection $grapes): oldWineSearch
     {
         $this->grapes = $grapes;
         return $this;
@@ -129,9 +135,9 @@ class WineSearch
 
     /**
      * @param Appellation $appellation
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setAppellation(?Appellation $appellation): WineSearch
+    public function setAppellation(?Appellation $appellation): oldWineSearch
     {
         $this->appellation = $appellation;
 
@@ -148,9 +154,9 @@ class WineSearch
 
     /**
      * @param string|null $color
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setColor(string $color): WineSearch
+    public function setColor(?string $color): oldWineSearch
     {
         $this->color = $color;
         return $this;
@@ -165,9 +171,9 @@ class WineSearch
 
     /**
      * @param string|null $winegrowing
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setWinegrowing(string $winegrowing): WineSearch
+    public function setWinegrowing(?string $winegrowing): oldWineSearch
     {
         $this->winegrowing = $winegrowing;
         return $this;
@@ -199,9 +205,9 @@ class WineSearch
 
     /**
      * @param ArrayCollection $features
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setFeatures(ArrayCollection $features): WineSearch
+    public function setFeatures(ArrayCollection $features): oldWineSearch
     {
         $this->features = $features;
         return $this;
@@ -217,14 +223,32 @@ class WineSearch
 
     /**
      * @param ArrayCollection $pairings
-     * @return WineSearch
+     * @return oldWineSearch
      */
-    public function setPairings(ArrayCollection $pairings): WineSearch
+    public function setPairings(ArrayCollection $pairings): oldWineSearch
     {
         $this->pairings = $pairings;
         return $this;
     }
 
 
+
+    /**
+     * @return bool
+     */
+    public function getIsinStock(): ?bool
+    {
+        return $this->isinStock;
+    }
+
+    /**
+     * @param bool|null $isinStock
+     * @return oldWineSearch
+     */
+    public function setIsinStock($isinStock): oldWineSearch
+    {
+        $this->isinStock = $isinStock;
+        return $this;
+    }
 }
 

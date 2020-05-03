@@ -34,9 +34,16 @@ class Appellation
      */
     private $region;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\WineSearch", mappedBy="appellation")
+     */
+    private $wineSearches;
+
+
     public function __construct()
     {
         $this->wines = new ArrayCollection();
+        $this->wineSearches = new ArrayCollection();
     }
 
 
@@ -130,4 +137,36 @@ class Appellation
 
         return $return;
     }
+
+    /**
+     * @return Collection|WineSearch[]
+     */
+    public function getWineSearches(): Collection
+    {
+        return $this->wineSearches;
+    }
+
+    public function addWineSearch(WineSearch $wineSearch): self
+    {
+        if (!$this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches[] = $wineSearch;
+            $wineSearch->setAppellation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWineSearch(WineSearch $wineSearch): self
+    {
+        if ($this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches->removeElement($wineSearch);
+            // set the owning side to null (unless already changed)
+            if ($wineSearch->getAppellation() === $this) {
+                $wineSearch->setAppellation(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

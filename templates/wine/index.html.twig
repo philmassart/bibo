@@ -21,8 +21,8 @@
 
                 {% if app.user %}
                 <li>
-                <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle" style="padding-left: 15px">Administration</a></li>
+                    <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle" style="padding-left: 15px">Administration</a></li>
                 <ul class="collapse list-unstyled" id="adminSubmenu">
                     <li>
                         <a href="{{ path('admin.wine.index') }}" class="nav-link">Admin</a>
@@ -51,10 +51,10 @@
                     {% endif %}
                 </ul>
                 <li>
-                <a href="#searchSubmenu" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle" style="padding-left: 15px">Recherche</a></li>
+                    <a href="#searchSubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle" style="padding-left: 15px">Recherche</a></li>
                 <ul class="collapse list-unstyled" id="searchSubmenu">
-                {% include'wine/_sidebar_filter.html.twig' %}
+                    {% include'wine/_sidebar_filter.html.twig' %}
                 </ul>
 
             </ul>
@@ -97,9 +97,7 @@
                             {% include 'wine/_wine.html.twig' %}
                         </div>
                     {% endfor %}
-                </div>
-
-            </div>
+                </div>            </div>
         </div>
     </div>
 
@@ -107,7 +105,8 @@
 {% block javascripts %}
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
@@ -119,6 +118,26 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
+        });
+        $(document).on('submit', 'form#wineSearch', function (event) {
+            event.preventDefault();
+            var $form = $(this);
+            var formData = new FormData($form[0]);
+                $.ajax({
+                    type: $form.attr('method'),
+                    url: $form.attr('action'),
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    enctype: 'multipart/form-data',
+                    beforeSend: function(){
+                        $('div#content').html('<img src="https://i.pinimg.com/originals/43/41/55/434155007ecd200001fcc2bff837eb08.gif">');
+                    },
+                    success: function (response) {
+                        $('div#content').replaceWith($('div#content', response));
+                    }
+
+                });
         });
     </script>
 {% endblock %}

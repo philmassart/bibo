@@ -128,6 +128,11 @@ class WineRepository extends ServiceEntityRepository
             $query->andWhere("w.name LIKE '%".$search->getName()."%'");
         }
 
+        if ($search->getIsStock())
+        {
+            $query->andWhere("w.stock > 0");
+        }
+
 
         return $query->getQuery();
     }

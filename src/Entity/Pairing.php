@@ -28,9 +28,15 @@ class Pairing
      */
     private $wines;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\WineSearch", mappedBy="pairings")
+     */
+    private $wineSearches;
+
     public function __construct()
     {
         $this->wines = new ArrayCollection();
+        $this->wineSearches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,6 +77,34 @@ class Pairing
     {
         if ($this->wines->contains($wine)) {
             $this->wines->removeElement($wine);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WineSearch[]
+     */
+    public function getWineSearches(): Collection
+    {
+        return $this->wineSearches;
+    }
+
+    public function addWineSearch(WineSearch $wineSearch): self
+    {
+        if (!$this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches[] = $wineSearch;
+            $wineSearch->addPairing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWineSearch(WineSearch $wineSearch): self
+    {
+        if ($this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches->removeElement($wineSearch);
+            $wineSearch->removePairing($this);
         }
 
         return $this;

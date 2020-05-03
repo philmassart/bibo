@@ -14,6 +14,7 @@ use App\Repository\GrapeRepository;
 use App\Repository\PairingRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,9 +23,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class WineSearchType extends AbstractType
 {
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('isStock', CheckboxType::class, [
+                'label' => "En stock",
+                'attr' => [
+                    'id' => "inStock"
+                ],
+                'required' => false
+
+            ])
             ->add('minYear', IntegerType::class, [
                 'required' => false,
                 'label' => false,
@@ -66,14 +77,12 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'class' => 'myfield'
                 ],
-                'query_builder' => function (AppellationRepository $appellation)
-                    {
+                'query_builder' => function (AppellationRepository $appellation) {
                     return $appellation->myFindAllAppelBuilder();
-                     },
-                'group_by' => function (Appellation $appellation)
-                    {
-                        return $appellation->getRegion()->getName();
-                    },
+                },
+                'group_by' => function (Appellation $appellation) {
+                    return $appellation->getRegion()->getName();
+                },
 
             ])
             ->add('color', ChoiceType::class, [
@@ -124,15 +133,12 @@ class WineSearchType extends AbstractType
             ])
             ->add('name', TextType::class, [
                 "required" => false,
-                'empty_data' => 'Nom',
                 "label" => false,
                 'attr' => [
                     'class' => 'myfield'
-                    ]
+                ]
 
-            ])
-
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

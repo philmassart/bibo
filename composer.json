@@ -8,6 +8,7 @@
         "cmen/google-charts-bundle": "^3.2",
         "cocur/slugify": "^4.0",
         "dompdf/dompdf": "^0.8.5",
+        "friendsofsymfony/jsrouting-bundle": "^2.5",
         "fzaninotto/faker": "^1.9",
         "kevinpapst/adminlte-bundle": "^3.0",
         "knplabs/knp-paginator-bundle": "^5.1",

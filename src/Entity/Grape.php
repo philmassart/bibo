@@ -28,9 +28,20 @@ class Grape
      */
     private $wines;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\WineSearch", inversedBy="grapes")
+     */
+    private $wineSearch;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\WineSearch", mappedBy="grapes")
+     */
+    private $wineSearches;
+
     public function __construct()
     {
         $this->wines = new ArrayCollection();
+        $this->wineSearches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,6 +82,46 @@ class Grape
     {
         if ($this->wines->contains($wine)) {
             $this->wines->removeElement($wine);
+        }
+
+        return $this;
+    }
+
+    public function getWineSearch(): ?WineSearch
+    {
+        return $this->wineSearch;
+    }
+
+    public function setWineSearch(?WineSearch $wineSearch): self
+    {
+        $this->wineSearch = $wineSearch;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WineSearch[]
+     */
+    public function getWineSearches(): Collection
+    {
+        return $this->wineSearches;
+    }
+
+    public function addWineSearch(WineSearch $wineSearch): self
+    {
+        if (!$this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches[] = $wineSearch;
+            $wineSearch->addGrape($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWineSearch(WineSearch $wineSearch): self
+    {
+        if ($this->wineSearches->contains($wineSearch)) {
+            $this->wineSearches->removeElement($wineSearch);
+            $wineSearch->removeGrape($this);
         }
 
         return $this;

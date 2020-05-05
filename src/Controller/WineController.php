@@ -55,6 +55,14 @@ class WineController extends AbstractController
         {
             $search = $searchFinded;
         }
+
+        if ($request->getMethod() == 'POST')
+        {
+            $search->getGrapes()->clear();
+            $search->getFeatures()->clear();
+            $search->getPairings()->clear();
+        }
+
         $form = $this->createForm(WineSearchType::class, $search, [
             "action" => $this->generateUrl('wine.index'),
             "method" => "POST",
@@ -63,26 +71,31 @@ class WineController extends AbstractController
             ]
         ])
             ->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
+
+        if ($form->isSubmitted())
         {
             $this->em->persist($search);
             $this->em->flush();
         }
+
         $wines = $paginator->paginate(
             $this->repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1),
             12
         );
-        $args = [
+
+        return $this->render('wine/index.html.twig', [
             'current_menu' => 'wines',
             'wines' => $wines,
             'form' => $form->createView()
-        ];
-        return $this->render('wine/index.html.twig', $args);
+        ]);
     }
+
     /**
      * @Route("/wines/{slug}-{id}", name="wine.show", requirements={"slug": "[a-z0-9\-]*" })
+     *
      * @param Wine $wine
+     * @param string $slug
      * @return Response
      *
      * @ParamConverter(

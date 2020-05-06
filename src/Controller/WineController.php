@@ -191,10 +191,10 @@ class WineController extends AbstractController
      */
     public function statregion()
     {
-        $wines = $this->getDoctrine()->getRepository(Wine::class)->findAll();
+        $wine = $this->getDoctrine()->getRepository(Wine::class)->findAll();
         $nbregion = 0;
-        foreach ($wines as $wine) {
-            $nbregion += $wine->getNbBottle();
+        foreach ($wine as $wine) {
+            $nbregion += $wine->getTotalBottles();
         }
         $pieChart = new PieChart();
         $pieChart->getData()->setArrayToDataTable(

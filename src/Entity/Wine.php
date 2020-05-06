@@ -118,10 +118,6 @@ class Wine
      */
     private $container;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $nbbottle;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Feature", inversedBy="wines")
@@ -402,17 +398,6 @@ class Wine
         return $this;
     }
 
-    public function getNbBottle(): ?int
-    {
-        return $this->nbbottle;
-    }
-
-    public function setNbBottle(?int $nbbottle): self
-    {
-        $this->nbbottle = $nbbottle;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Feature[]
@@ -513,6 +498,14 @@ class Wine
         return $this;
     }
 
+    public function getTotalBottles()
+    {
+        $return = 0;
 
+        $return += $this->getStock();
+
+
+        return $return;
+    }
 
 }

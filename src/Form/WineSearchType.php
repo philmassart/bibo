@@ -30,6 +30,7 @@ class WineSearchType extends AbstractType
         $builder
             ->add('isStock', CheckboxType::class, [
                 'label' => "En stock",
+                'label_attr' => ['class' => 'switch-custom'],
                 'attr' => [
                     'id' => "inStock"
                 ],

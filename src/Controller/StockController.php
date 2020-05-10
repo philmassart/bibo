@@ -17,6 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class StockController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="stock.index", methods={"GET"})
+     */
+    public function index(StockRepository  $stockRepository): Response
+    {
+        return $this->render('stock/index.html.twig', [
+            'stocks' => $stockRepository->myFindAll(),
+        ]);
+    }
+
     /**
      * @param Wine $wine
      * @param string $movement

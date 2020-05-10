@@ -18,21 +18,25 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Actions</th>
+                    <th>Quantité</th>
+                    <th>In / Out</th>
+                    <th>ID vin</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for stock in stocks %}
                     <tr>
-                        <td>{{ movement.id }} </td>
-                        <td>{{ movement.quantity }} </td>
+                        <td>{{ stock.id }} </td>
+                        <td>{{ stock.quantity }} </td>
+                        <td>{{ stock.movement|trans }} </td>
+                        <td>{{ stock.wine.name|default}} </td>
                         <td>
-                            <a href="{{ path ('movement.edit', {id: movement.id}) }}" class="btn btn-secondary">Editer</a>
-                            <form method="post" action="{{ path('movement.delete', {id: movement.id}) }}"
-                                  style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movement.id) }}">
-                                <button class="btn btn-danger">Supprimer</button>
+{#                            <a href="{{ path ('stock.edit', {id: stock.id}) }}" class="btn btn-secondary">Editer</a>#}
+{#                            <form method="post" action="{{ path('stock.delete', {id: stock.id}) }}"#}
+{#                                  style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">#}
+{#                                <input type="hidden" name="_method" value="DELETE">#}
+{#                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movement.id) }}">#}
+{#                                <button class="btn btn-danger">Supprimer</button>#}
                             </form>
                         </td>
                     </tr>

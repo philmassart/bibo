@@ -20,6 +20,9 @@ class StockType extends AbstractType
                 'choices' => Stock::MOVEMENT,
                 'label' => "form.movement"
             ])
+            ->add('wine', null, [
+                'label' => "form.wine"
+            ])
             ->add('comment', null, [
                 'label' => "form.comment"
             ])

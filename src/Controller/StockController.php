@@ -39,7 +39,9 @@ class StockController extends AbstractController
     {
         $stock = new Stock();
         $stock->setWine($wine);
-        $form = $this->createForm(StockType::class, $stock)->handleRequest($request);
+        $form = $this->createForm(StockType::class, $stock)
+            ->remove('wine')
+            ->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($stock);
             $entityManager->flush();
@@ -77,7 +79,9 @@ class StockController extends AbstractController
     public function edit(Stock $stock, Request $request, EntityManagerInterface $entityManager): Response
     {
         $stock->setOldQuantity($stock->getQuantity());
-        $form = $this->createForm(StockType::class, $stock);
+        $form = $this->createForm(StockType::class, $stock)
+            ->remove('wine')
+        ;
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

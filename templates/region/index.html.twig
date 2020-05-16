@@ -102,6 +102,23 @@
                 </tbody>
             </table>
 
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <h3>Hongrie</h3>
+                {% for region in regions %}
+                    {% if region.country == 'region.country.hungary' %}
+                        {{ include ('region/_list.html.twig') }}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
 
         </div>
     </div>

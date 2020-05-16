@@ -320,6 +320,25 @@
         </table>
 
 
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div id="Hongrie"><h2>Hongrie</h2></div>
+            <h3>Tokaji</h3>
+            {% for appellation in appellation %}
+                {% if appellation.region.name == 'Tokaji' %}
+                    {{ include ('appellation/_list.html.twig') }}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
 
     </div>
 

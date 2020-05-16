@@ -17,7 +17,9 @@ class Region
         'region.country.spain' => 'region.country.spain',
         'region.country.chili' => 'region.country.chili',
         'region.country.greece' => 'region.country.greece',
-        'region.country.czechia' => 'region.country.czechia'
+        'region.country.czechia' => 'region.country.czechia',
+        'region.country.hungary' => 'region.country.hungary'
+
     ];
 
 

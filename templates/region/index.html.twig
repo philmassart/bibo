@@ -38,6 +38,14 @@
                 </tbody>
             </table>
 
+            APATRIDES
+            <ul>
+                {% for region in regions %}
+                    {% if region.country is null %}
+                        <li><a href="{{ path('region.edit', {id: region.id}) }}" target="_blank">{{ region.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 {#            <table class="table table-striped">#}
 {#                <thead>#}
 {#                <tr>#}

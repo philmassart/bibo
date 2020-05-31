@@ -42,7 +42,7 @@
             <ul>
                 {% for region in regions %}
                     {% if region.country is null %}
-                        <li><a href="{{ path('region.edit', {id: region.id}) }}" target="_blank">{{ region.name }}</a></li>
+                        <li><a href="{{ path('region.edit', {id: region.id}) }}">{{ region.name }}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

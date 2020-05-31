@@ -27,7 +27,7 @@
                 <tbody>
                 {% for country in countries %}
                     <h3>{{ country.name  }}</h3>
-                    {% for region in regions %}
+                    {% for region in country.regions %}
                         {{ include ('region/_list.html.twig') }}
                     {% endfor %}
                 {% endfor %}

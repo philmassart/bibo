@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Region;
 use App\Form\RegionType;
+use App\Repository\CountryRepository;
 use App\Repository\RegionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,11 @@ class RegionController extends AbstractController
     /**
      * @Route("/", name="region.index", methods={"GET"})
      */
-    public function index(RegionRepository $regionRepository): Response
+    public function index(RegionRepository $regionRepository, CountryRepository $countryRepository): Response
     {
         return $this->render('region/index.html.twig', [
             'regions' => $regionRepository->myFindAllRegion(),
+            'countries' => $countryRepository->findBy([], ['name' => 'ASC']),
         ]);
     }
 

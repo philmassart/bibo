@@ -25,14 +25,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <h3>France</h3>
-                {% for region in regions %}
-                    {% if region.country is not null %}
-                    {% if region.country.name == 'France' %}
-
+                {% for country in countries %}
+                    <h3>{{ country.name  }}</h3>
+                    {% for region in regions %}
                         {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                    {% endif %}
+                    {% endfor %}
                 {% endfor %}
                 </tbody>
             </table>

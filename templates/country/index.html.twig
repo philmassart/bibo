@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les pays' %}
+
+{% block body %}
+    <div id="content">
+        <div class="container mt-4">
+
+            <h1>Gérer les pays</h1>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+            <div class="div text-right">
+                <a href="{{ path('country.new') }}" class="btn btn-primary">Créer un nouveau pays</a>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nom du pays</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for country in countries %}
+                    <tr>
+                        <td>{{ country.name }} </td>
+                        <td>
+                            <a href="{{ path ('country.edit', {id: country.id}) }}" class="btn btn-secondary">Editer</a>
+                            <form method="post" action="{{ path('country.delete', {id: country.id}) }}"
+                                  style="display: inline-block" onsubmit="return confirm('Êtes-vous certain?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ country.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}

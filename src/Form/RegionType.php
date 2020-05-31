@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Country;
 use App\Entity\Region;
+use App\Repository\ContainerRepository;
+use App\Repository\CountryRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +21,16 @@ class RegionType extends AbstractType
                 'label' => "form.name",
                 'attr' => ['autofocus' => true]
             ])
-            ->add('country', ChoiceType::class, [
+            ->add('country', EntityType::class, [
                 'label' => "form.country",
-                'choices' => Region::COUNTRY
-            ]);
+                'class' => Country::class,
+                'required' => false,
+                'choice_label' => 'name',
+                'multiple' => false,
+                'query_builder' => function (CountryRepository $countryRepository) {
+                    return $countryRepository->myFindAllCountryBuilder();
+                }
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -31,13 +41,13 @@ class RegionType extends AbstractType
         ]);
     }
 
-    private function getChoices()
-    {
-        $choices = Region::COUNTRY;
-        $output = [];
-        foreach ($choices as $k => $v) {
-            $output[$v] = $k;
-        }
-        return $output;
-    }
+//    private function getChoices()
+//    {
+//        $choices = Region::COUNTRY;
+//        $output = [];
+//        foreach ($choices as $k => $v) {
+//            $output[$v] = $k;
+//        }
+//        return $output;
+//    }
 }

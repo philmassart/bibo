@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Gérer les regions' %}
+{% block title 'Gérer les régions' %}
 
 {% block body %}
     <div id="content">
@@ -27,97 +27,100 @@
                 <tbody>
                 <h3>France</h3>
                 {% for region in regions %}
-                    {% if region.country == 'region.country.france' %}
+                    {% if region.country is not null %}
+                    {% if region.country.name == 'France' %}
+
                         {{ include ('region/_list.html.twig') }}
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <h3>Italie</h3>
-                {% for region in regions %}
-                    {% if region.country == 'region.country.italy' %}
-                        {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+{#            <table class="table table-striped">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Nom</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <h3>Italie</h3>#}
+{#                {% for region in regions %}#}
+{#                    {% if region.country == 'region.country.italy' %}#}
+{#                        {{ include ('region/_list.html.twig') }}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <h3>Espagne</h3>
-                {% for region in regions %}
-                    {% if region.country == 'region.country.spain' %}
-                        {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+{#            <table class="table table-striped">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Nom</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <h3>Espagne</h3>#}
+{#                {% for region in regions %}#}
+{#                    {% if region.country == 'region.country.spain' %}#}
+{#                        {{ include ('region/_list.html.twig') }}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <h3>Chili</h3>
-                {% for region in regions %}
-                    {% if region.country == 'region.country.chili' %}
-                        {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+{#            <table class="table table-striped">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Nom</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <h3>Chili</h3>#}
+{#                {% for region in regions %}#}
+{#                    {% if region.country == 'region.country.chili' %}#}
+{#                        {{ include ('region/_list.html.twig') }}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <h3>Tchéquie</h3>
-                {% for region in regions %}
-                    {% if region.country == 'region.country.czechia' %}
-                        {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+{#            <table class="table table-striped">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Nom</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <h3>Tchéquie</h3>#}
+{#                {% for region in regions %}#}
+{#                    {% if region.country == 'region.country.czechia' %}#}
+{#                        {{ include ('region/_list.html.twig') }}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <h3>Hongrie</h3>
-                {% for region in regions %}
-                    {% if region.country == 'region.country.hungary' %}
-                        {{ include ('region/_list.html.twig') }}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+{#            <table class="table table-striped">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Nom</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <h3>Hongrie</h3>#}
+{#                {% for region in regions %}#}
+{#                    {% if region.country == 'region.country.hungary' %}#}
+{#                        {{ include ('region/_list.html.twig') }}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
 
 
         </div>

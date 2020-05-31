@@ -11,17 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Region
 {
-    const COUNTRY = [
-        'region.country.france' => 'region.country.france',
-        'region.country.italy' => 'region.country.italy',
-        'region.country.spain' => 'region.country.spain',
-        'region.country.chili' => 'region.country.chili',
-        'region.country.greece' => 'region.country.greece',
-        'region.country.czechia' => 'region.country.czechia',
-        'region.country.hungary' => 'region.country.hungary'
-
-    ];
-
 
     /**
      * @ORM\Id()
@@ -35,16 +24,18 @@ class Region
      */
     private $name;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $country = self::COUNTRY['region.country.france'];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Appellation", mappedBy="region", cascade={"persist"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
     private $appellations;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="regions")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $country;
 
     public function __construct()
     {
@@ -68,17 +59,6 @@ class Region
         return $this;
     }
 
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
 
 //    public function getCountryType(): string
 //    {
@@ -150,6 +130,18 @@ class Region
         }
 
         return $wines;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 
 }

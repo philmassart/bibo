@@ -7,6 +7,7 @@ use App\Entity\Grape;
 use App\Entity\Pairing;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
+use Doctrine\Persistence\ManagerRegistry as Registry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
@@ -22,7 +23,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class WineRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(Registry $registry)
     {
         parent::__construct($registry, Wine::class);
     }

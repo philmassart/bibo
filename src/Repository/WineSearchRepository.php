@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\WineSearch;
+use Doctrine\Persistence\ManagerRegistry as Registry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -14,7 +15,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class WineSearchRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(Registry $registry)
     {
         parent::__construct($registry, WineSearch::class);
     }

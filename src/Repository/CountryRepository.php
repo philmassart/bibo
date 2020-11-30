@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Country;
+use Doctrine\Persistence\ManagerRegistry as Registry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CountryRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(Registry $registry)
     {
         parent::__construct($registry, Country::class);
     }

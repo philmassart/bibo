@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Pairing;
+use Doctrine\Persistence\ManagerRegistry as Registry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
@@ -15,7 +16,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class PairingRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(Registry $registry)
     {
         parent::__construct($registry, Pairing::class);
     }

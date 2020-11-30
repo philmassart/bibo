@@ -96,6 +96,9 @@
     "doctrine/reflection": {
         "version": "1.2.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.1"
+    },
     "dompdf/dompdf": {
         "version": "v0.8.5"
     },
@@ -281,6 +284,9 @@
     "symfony/dependency-injection": {
         "version": "v5.0.5"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/doctrine-bridge": {
         "version": "v5.0.5"
     },
@@ -417,9 +423,6 @@
     "symfony/options-resolver": {
         "version": "v5.0.5"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.8"
-    },
     "symfony/phpunit-bridge": {
         "version": "4.3",
         "recipe": {
@@ -452,6 +455,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.14.0"
+    },
+    "symfony/polyfill-php80": {
+        "version": "v1.20.0"
     },
     "symfony/process": {
         "version": "v5.0.5"

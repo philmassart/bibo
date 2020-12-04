@@ -26,3 +26,7 @@ src/DataFixtures
 ###< liip/imagine-bundle ###
 /nbproject/private/
 /composer.phar
+
+###> PhpStorm ###
+/.idea
+

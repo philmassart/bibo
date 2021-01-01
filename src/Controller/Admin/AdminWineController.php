@@ -9,6 +9,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Traits\SoftDeleteable;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 class AdminWineController extends AbstractController
 {
@@ -33,7 +36,7 @@ class AdminWineController extends AbstractController
      */
     public function index()
     {
-        $wines = $this->repository->myFindAll();
+        $wines = $this->repository->myFindAll($this->getUser());
         return $this->render('admin/wine/index.html.twig', compact('wines'));
     }
 
@@ -43,6 +46,8 @@ class AdminWineController extends AbstractController
     public function new(Request $request)
     {
         $wine = new Wine();
+        $wine->setUser($this->getUser());
+
         $form = $this->createForm(WineType::class, $wine);
         $form->handleRequest($request);
 

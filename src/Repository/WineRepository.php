@@ -7,6 +7,7 @@ use App\Entity\Grape;
 use App\Entity\Pairing;
 use App\Entity\Wine;
 use App\Entity\WineSearch;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry as Registry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -14,6 +15,8 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+
 
 /**
  * @method Wine|null find($id, $lockMode = null, $lockVersion = null)
@@ -49,10 +52,10 @@ class WineRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
-    public function findAllVisibleQuery(WineSearch $search): Query
+    public function findAllVisibleQuery(User $user, WineSearch $search): Query
     {
 
-        $query = $this->findVisibleQuery();
+        $query = $this->findVisibleQuery($user);
 
         if ($search->getMaxPrice()) {
             $query
@@ -150,10 +153,12 @@ class WineRepository extends ServiceEntityRepository
     }
 
 
-    private function findVisibleQuery(): QueryBuilder
+    private function findVisibleQuery(User $user): QueryBuilder
     {
-        return $this->createQueryBuilder('w');
-//            ->where('w.stock > 0');
+        return $this->createQueryBuilder('w')
+               ->where('w.stock > 0')
+                ->andWhere('w.user = :user')
+                ->setParameter('user', $user);
     }
 
 
@@ -168,9 +173,11 @@ class WineRepository extends ServiceEntityRepository
     /**
      * @return mixed
      */
-    public function myFindAll()
+    public function myFindAll(User $user)
     {
         return $this->myFindAllBuilder()
+            ->andWhere('w.user = :user')
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult();
     }

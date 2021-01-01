@@ -15,12 +15,13 @@ security:
             anonymous: true
             logout:
                 path: /logout
-                target: /
+                target: /wines
 
             #http_basic: true
 
             form_login:
                 check_path: login
+                default_target_path: admin.wine.index
 
 
 

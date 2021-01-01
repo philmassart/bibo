@@ -79,7 +79,7 @@ class WineController extends AbstractController
         }
 
         $wines = $paginator->paginate(
-            $this->repository->findAllVisibleQuery($search),
+            $this->repository->findAllVisibleQuery($this->getUser(), $search),
             $request->query->getInt('page', 1),
             12
         );

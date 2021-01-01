@@ -6,20 +6,23 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use App\Traits\SoftDeleteable;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WineRepository")
  * @Vich\Uploadable()
+ * * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Wine
 {
-
+    use SoftDeleteable;
 
     const COLOR = [
         'wine.color.red' => 'wine.color.red',
@@ -143,6 +146,11 @@ class Wine
      * @ORM\OneToMany(targetEntity="App\Entity\Stock", mappedBy="wine", cascade={"remove", "persist"})
      */
     private $stocks;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="wines")
+     */
+    private $user;
 
     public function __construct()
     {
@@ -506,6 +514,18 @@ class Wine
 
 
         return $return;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
 }

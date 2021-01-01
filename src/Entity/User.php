@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -26,6 +28,16 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Wine::class, mappedBy="user")
+     */
+    private $wines;
+
+    public function __construct()
+    {
+        $this->wines = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,5 +115,35 @@ class User implements UserInterface, \Serializable
             $this->username,
             $this->password
             ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    /**
+     * @return Collection|Wine[]
+     */
+    public function getWines(): Collection
+    {
+        return $this->wines;
+    }
+
+    public function addWine(Wine $wine): self
+    {
+        if (!$this->wines->contains($wine)) {
+            $this->wines[] = $wine;
+            $wine->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWine(Wine $wine): self
+    {
+        if ($this->wines->removeElement($wine)) {
+            // set the owning side to null (unless already changed)
+            if ($wine->getUser() === $this) {
+                $wine->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

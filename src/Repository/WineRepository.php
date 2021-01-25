@@ -50,12 +50,15 @@ class WineRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param User $user
+     * @param WineSearch $search
      * @return Query
      */
     public function findAllVisibleQuery(User $user, WineSearch $search): Query
     {
-
-        $query = $this->findVisibleQuery($user);
+        $query = $this->createQueryBuilder('w')
+            ->andWhere('w.user = :user')
+            ->setParameter('user', $user);
 
         if ($search->getMaxPrice()) {
             $query
@@ -142,11 +145,12 @@ class WineRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param User $user
      * @return Wine[]
      */
-    public function findLatest(): array
+    public function findLatest(User $user): array
     {
-        return $this->findVisibleQuery()
+        return $this->findVisibleQuery($user)
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();

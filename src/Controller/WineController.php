@@ -36,6 +36,7 @@ class WineController extends AbstractController
      * @var EntityManagerInterface
      */
     private $em;
+
     public function __construct(WineRepository $repository, EntityManagerInterface $em, Environment $twig, Pdf $pdf)
     {
         $this->repository = $repository;
@@ -43,8 +44,12 @@ class WineController extends AbstractController
         $this->pdf = $pdf;
         $this->em = $em;
     }
+
     /**
      * @Route("/wines", name="wine.index")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @param WineSearchRepository $wineSearchRepository
      * @return Response
      */
     public function index(PaginatorInterface $paginator, Request $request, WineSearchRepository $wineSearchRepository): Response

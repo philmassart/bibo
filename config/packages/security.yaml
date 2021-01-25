@@ -23,9 +23,6 @@ security:
                 check_path: login
                 default_target_path: admin.wine.index
 
-
-
-
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

@@ -17,7 +17,9 @@ class HomeController extends AbstractController
 
     public function index(WineRepository $repository): Response
     {
-        $wines = $repository->findLatest();
+        return $this->redirectToRoute('login');
+
+        $wines = $repository->findLatest($this->getUser());
         return $this->render('pages/home.html.twig', [
             'wines' => $wines
         ]);

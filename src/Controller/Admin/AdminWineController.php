@@ -47,6 +47,7 @@ class AdminWineController extends AbstractController
     {
         $wine = new Wine();
         $wine->setUser($this->getUser());
+        //$wine->setStock(0);
 
         $form = $this->createForm(WineType::class, $wine);
         $form->handleRequest($request);

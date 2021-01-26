@@ -54,11 +54,11 @@ class WineController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request, WineSearchRepository $wineSearchRepository): Response
     {
-        $search = new WineSearch();
-        $searchFinded = $wineSearchRepository->findOneById('1');
-        if ($searchFinded)
+        $search = $wineSearchRepository->findOneByUser($this->getUser());
+        if (!$search)
         {
-            $search = $searchFinded;
+            $search = new WineSearch();
+            $search->setUser($this->getUser());
         }
 
         if ($request->getMethod() == 'POST')
@@ -194,7 +194,7 @@ class WineController extends AbstractController
      * @Route("/stat", name="stat")
      * @return type
      */
-    public function statregion()
+    public function statRegion()
     {
         $wine = $this->getDoctrine()->getRepository(Wine::class)->findAll();
         $nbregion = 0;

@@ -23,8 +23,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class WineSearchType extends AbstractType
 {
-
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -93,8 +91,7 @@ class WineSearchType extends AbstractType
                 'label' => 'Couleur',
                 'attr' => [
                     'class' => 'myfield'
-                ],
-
+                ]
             ])
             ->add('winegrowing', ChoiceType::class, [
                 "choices" => array_combine(Wine::WINEGROWING, Wine::WINEGROWING),
@@ -103,8 +100,7 @@ class WineSearchType extends AbstractType
                 'label' => 'Viticulture',
                 'attr' => [
                     'class' => 'myfield'
-                ],
-
+                ]
             ])
             ->add('features', EntityType::class, [
                 'required' => false,

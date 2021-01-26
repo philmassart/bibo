@@ -9,6 +9,7 @@ use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WineSearchRepository")
+ * @ORM\Table(name="wine_search")
  */
 class WineSearch
 {
@@ -68,6 +69,11 @@ class WineSearch
      * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wineSearches")
      */
     private $appellation;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     */
+    private $user;
 
     public function __construct()
     {
@@ -240,6 +246,18 @@ class WineSearch
     public function setAppellation(?Appellation $appellation): self
     {
         $this->appellation = $appellation;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

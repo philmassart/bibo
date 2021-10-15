@@ -1,2 +1,2 @@
 # bibo
-Test cave à vin
+Test cave à vin multi-utilisateurs

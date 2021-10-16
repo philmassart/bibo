@@ -1,7 +1,7 @@
 public/images
 public/media
 src/DataFixtures
-
+composer
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -28,5 +28,4 @@ src/DataFixtures
 /composer.phar
 
 ###> PhpStorm ###
-/.idea
-
+.idea/

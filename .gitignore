@@ -28,4 +28,4 @@ composer
 /composer.phar
 
 ###> PhpStorm ###
-.idea/
+/.idea/*

@@ -29,3 +29,6 @@ composer
 
 ###> PhpStorm ###
 /.idea/*
+.idea/*
+
+rector.php

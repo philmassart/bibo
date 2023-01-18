@@ -11,10 +11,7 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param WineRepository $repository
-     * @return Response
      */
-
     public function index(WineRepository $repository): Response
     {
         return $this->redirectToRoute('login');

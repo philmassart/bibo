@@ -21,22 +21,22 @@ class Container
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\Column(type="decimal", precision=3, scale=1)
      */
-    private $capacity;
+    private ?string $capacity = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $unit;
+    private ?string $unit = null;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Wine", mappedBy="container", cascade={"persist"})
      */
-    private $wines;
+    private \Doctrine\Common\Collections\Collection|array $wines;
 
     public function __construct()
     {

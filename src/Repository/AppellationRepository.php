@@ -31,9 +31,6 @@ class AppellationRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllAppelBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('a')

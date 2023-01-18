@@ -22,20 +22,20 @@ class Region
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Appellation", mappedBy="region", cascade={"persist"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $appellations;
+    private \Doctrine\Common\Collections\Collection|array $appellations;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="regions")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $country;
+    private ?\App\Entity\Country $country = null;
 
     public function __construct()
     {

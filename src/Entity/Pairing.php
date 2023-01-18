@@ -21,17 +21,17 @@ class Pairing
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Wine", mappedBy="pairings")
      */
-    private $wines;
+    private \Doctrine\Common\Collections\Collection|array $wines;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\WineSearch", mappedBy="pairings")
      */
-    private $wineSearches;
+    private \Doctrine\Common\Collections\Collection|array $wineSearches;
 
     public function __construct()
     {

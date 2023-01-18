@@ -31,9 +31,6 @@ class ContainerRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllContainerBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('c')

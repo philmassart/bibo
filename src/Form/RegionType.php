@@ -27,9 +27,7 @@ class RegionType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function (CountryRepository $countryRepository) {
-                    return $countryRepository->myFindAllCountryBuilder();
-                }
+                'query_builder' => fn(CountryRepository $countryRepository) => $countryRepository->myFindAllCountryBuilder()
                 ]);
     }
 

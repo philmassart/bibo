@@ -21,23 +21,23 @@ class Appellation
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Wine", mappedBy="appellation",  cascade={"persist"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $wines;
+    private \Doctrine\Common\Collections\Collection|array $wines;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="appellations")
      */
-    private $region;
+    private ?\App\Entity\Region $region = null;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\WineSearch", mappedBy="appellation")
      */
-    private $wineSearches;
+    private \Doctrine\Common\Collections\Collection|array $wineSearches;
 
 
     public function __construct()

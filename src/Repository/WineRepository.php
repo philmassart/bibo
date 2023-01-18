@@ -32,7 +32,6 @@ class WineRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int $id
      * @return mixed
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -49,11 +48,6 @@ class WineRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    /**
-     * @param User $user
-     * @param WineSearch $search
-     * @return Query
-     */
     public function findAllVisibleQuery(User $user, WineSearch $search): Query
     {
         $query = $this->createQueryBuilder('w')
@@ -145,7 +139,6 @@ class WineRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param User $user
      * @return Wine[]
      */
     public function findLatest(User $user): array
@@ -186,9 +179,6 @@ class WineRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('w')

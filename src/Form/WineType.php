@@ -53,9 +53,7 @@ class WineType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'query_builder' => function (FeatureRepository $featureRepository) {
-                    return $featureRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(FeatureRepository $featureRepository) => $featureRepository->myFindAllBuilder()
             ])
             ->add('pairings', EntityType::class, [
                 'label' => "form.pairings",
@@ -63,9 +61,7 @@ class WineType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'query_builder' => function (PairingRepository $pairingRepository) {
-                    return $pairingRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(PairingRepository $pairingRepository) => $pairingRepository->myFindAllBuilder()
             ])
             ->add('grapes', EntityType::class, [
                 'label' => "form.grapes",
@@ -73,9 +69,7 @@ class WineType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'query_builder' => function (GrapeRepository $grapeRepository) {
-                    return $grapeRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(GrapeRepository $grapeRepository) => $grapeRepository->myFindAllBuilder()
             ])
             ->add('appellation', EntityType::class, [
                 'label' => "form.appellation",
@@ -83,9 +77,7 @@ class WineType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function (AppellationRepository $appellationRepository) {
-                    return $appellationRepository->myFindAllAppelBuilder();
-                }
+                'query_builder' => fn(AppellationRepository $appellationRepository) => $appellationRepository->myFindAllAppelBuilder()
             ])
             ->add('container', EntityType::class, [
                 'label' => "form.container",
@@ -93,9 +85,7 @@ class WineType extends AbstractType
                 'required' => false,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function (ContainerRepository $containerRepository) {
-                    return $containerRepository->myFindAllContainerBuilder();
-                }
+                'query_builder' => fn(ContainerRepository $containerRepository) => $containerRepository->myFindAllContainerBuilder()
             ])
             ->add('stock', null, [
                 'label' => "form.stock",

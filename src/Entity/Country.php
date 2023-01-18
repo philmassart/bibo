@@ -21,12 +21,12 @@ class Country
         /**
      * @ORM\Column(type="string", length=45)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Region", mappedBy="country")
      */
-    private $regions;
+    private \Doctrine\Common\Collections\Collection|array $regions;
 
     public function __construct()
     {

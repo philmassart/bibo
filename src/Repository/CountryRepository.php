@@ -31,9 +31,6 @@ class CountryRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllCountryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('co')

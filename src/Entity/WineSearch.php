@@ -23,57 +23,57 @@ class WineSearch
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $isStock;
+    private ?bool $isStock = null;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $maxPrice;
+    private ?int $maxPrice = null;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $minYear;
+    private ?int $minYear = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Grape", inversedBy="wineSearches")
      */
-    private $grapes;
+    private \Doctrine\Common\Collections\Collection|array $grapes;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Feature", inversedBy="wineSearches")
      */
-    private $features;
+    private \Doctrine\Common\Collections\Collection|array $features;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Pairing", inversedBy="wineSearches")
      */
-    private $pairings;
+    private \Doctrine\Common\Collections\Collection|array $pairings;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $color;
+    private ?string $color = null;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $winegrowing;
+    private ?string $winegrowing = null;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Appellation", inversedBy="wineSearches")
      */
-    private $appellation;
+    private ?\App\Entity\Appellation $appellation = null;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
-    private $user;
+    private ?\App\Entity\User $user = null;
 
     public function __construct()
     {

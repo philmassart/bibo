@@ -29,9 +29,7 @@ class StockController extends AbstractController
     }
 
     /**
-     * @param Wine $wine
      * @param string $movement
-     * @param Request $request
      * @return Response
      * @Route("/{id}", name="stock.movement")
      */
@@ -60,20 +58,16 @@ class StockController extends AbstractController
     }
 
 //    /**
-//     * @Route("/", name="movement.index", methods={"GET"})
-//     */
-//    public function index(StockRepository $repository): Response
-//    {
-//        return $this->render('stock/index.html.twig', [
-//            'id' => $repository->myFindAll(),
-//        ]);
-//    }
-
+    //     * @Route("/", name="movement.index", methods={"GET"})
+    //     */
+    //    public function index(StockRepository $repository): Response
+    //    {
+    //        return $this->render('stock/index.html.twig', [
+    //            'id' => $repository->myFindAll(),
+    //        ]);
+    //    }
     /**
      * @param Wine $wine
-     * @param Stock $stock
-     * @param Request $request
-     * @return Response
      * @Route("/{id}/edit", name="movement.edit", methods={"GET","POST"})
      */
     public function edit(Stock $stock, Request $request, EntityManagerInterface $entityManager): Response
@@ -110,9 +104,6 @@ class StockController extends AbstractController
 
     /**
      * @param Wine $wine
-     * @param Request $request
-     * @param Stock $stock
-     * @return Response
      * @Route("/{id}/delete", name="movement.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Stock $stock): Response

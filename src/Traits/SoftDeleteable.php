@@ -20,10 +20,7 @@ trait SoftDeleteable
         return $this->deletedAt;
     }
 
-    /**
-     * @param mixed $deletedAt
-     */
-    public function setDeletedAt($deletedAt)
+    public function setDeletedAt(mixed $deletedAt)
     {
         $this->deletedAt = $deletedAt;
     }

@@ -10,9 +10,9 @@ class LayoutExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('price', [$this, 'price'], ["is_safe" => ["html"]]),
-            new TwigFilter('alcohol', [$this, 'alcohol'], ["is_safe" => ["html"]]),
-            new TwigFilter('capacity', [$this, 'capacity'], ["is_safe" => ["html"]]),
+            new TwigFilter('price', $this->price(...), ["is_safe" => ["html"]]),
+            new TwigFilter('alcohol', $this->alcohol(...), ["is_safe" => ["html"]]),
+            new TwigFilter('capacity', $this->capacity(...), ["is_safe" => ["html"]]),
         ];
     }
 

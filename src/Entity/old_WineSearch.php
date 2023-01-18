@@ -14,53 +14,28 @@ class oldWineSearch
      */
     private $isinStock;
 
-    /**
-     * @var int|null
-     */
-    private $maxPrice;
+    private ?int $maxPrice = null;
 
     /**
-     * @var int|null
      * @Assert\Range(min=1950, max=2050)
      */
-    private $minYear;
+    private ?int $minYear = null;
 
-    /**
-     * @var ArrayCollection
-     */
-    private $grapes;
+    private \Doctrine\Common\Collections\ArrayCollection $grapes;
 
 
-    /**
-     * @var ArrayCollection
-     */
-    private $features;
+    private \Doctrine\Common\Collections\ArrayCollection $features;
 
 
-    /**
-     * @var ArrayCollection
-     */
-    private $pairings;
+    private \Doctrine\Common\Collections\ArrayCollection $pairings;
 
-    /**
-     * @var Appellation
-     */
-    private $appellation;
+    private ?\App\Entity\Appellation $appellation = null;
 
-    /**
-     * @var string|null
-     */
-    private $color;
+    private ?string $color = null;
 
-    /**
-     * @var string|null
-     */
-    private $winegrowing;
+    private ?string $winegrowing = null;
 
-    /**
-     * @var string|null
-     */
-    private $name;
+    private ?string $name = null;
 
 
     public function __construct()
@@ -71,54 +46,33 @@ class oldWineSearch
     }
 
 
-    /**
-     * @return int|null
-     */
     public function getMaxPrice(): ?int
     {
         return $this->maxPrice;
     }
 
-    /**
-     * @param int|null $maxPrice
-     * @return oldWineSearch
-     */
     public function setMaxPrice(?int $maxPrice): oldWineSearch
     {
         $this->maxPrice = $maxPrice;
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getMinYear(): ?int
     {
         return $this->minYear;
     }
 
-    /**
-     * @param int|null $minYear
-     * @return oldWineSearch
-     */
     public function setMinYear(?int $minYear): oldWineSearch
     {
         $this->minYear = $minYear;
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getGrapes(): ArrayCollection
     {
         return $this->grapes;
     }
 
-    /**
-     * @param ArrayCollection $grapes
-     * @return oldWineSearch
-     */
     public function setGrapes(ArrayCollection $grapes): oldWineSearch
     {
         $this->grapes = $grapes;
@@ -135,7 +89,6 @@ class oldWineSearch
 
     /**
      * @param Appellation $appellation
-     * @return oldWineSearch
      */
     public function setAppellation(?Appellation $appellation): oldWineSearch
     {
@@ -144,87 +97,53 @@ class oldWineSearch
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * @param string|null $color
-     * @return oldWineSearch
-     */
     public function setColor(?string $color): oldWineSearch
     {
         $this->color = $color;
         return $this;
     }
-    /**
-     * @return string|null
-     */
     public function getWinegrowing(): ?string
     {
         return $this->winegrowing;
     }
 
-    /**
-     * @param string|null $winegrowing
-     * @return oldWineSearch
-     */
     public function setWinegrowing(?string $winegrowing): oldWineSearch
     {
         $this->winegrowing = $winegrowing;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getFeatures(): ArrayCollection
     {
         return $this->features;
     }
 
-    /**
-     * @param ArrayCollection $features
-     * @return oldWineSearch
-     */
     public function setFeatures(ArrayCollection $features): oldWineSearch
     {
         $this->features = $features;
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getPairings(): ArrayCollection
     {
         return $this->pairings;
     }
 
-    /**
-     * @param ArrayCollection $pairings
-     * @return oldWineSearch
-     */
     public function setPairings(ArrayCollection $pairings): oldWineSearch
     {
         $this->pairings = $pairings;
@@ -243,7 +162,6 @@ class oldWineSearch
 
     /**
      * @param bool|null $isinStock
-     * @return oldWineSearch
      */
     public function setIsinStock($isinStock): oldWineSearch
     {

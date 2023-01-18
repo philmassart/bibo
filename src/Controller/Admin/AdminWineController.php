@@ -15,19 +15,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 class AdminWineController extends AbstractController
 {
-    /**
-     *
-     */
-    private $repository;
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    public function __construct(WineRepository $repository, EntityManagerInterface $em)
+    public function __construct(
+        /**
+         *
+         */
+        private readonly WineRepository $repository,
+        private readonly EntityManagerInterface $em
+    )
     {
-        $this->repository = $repository;
-        $this->em = $em;
     }
 
     /**
@@ -70,7 +65,6 @@ class AdminWineController extends AbstractController
 
     /**
      * @Route("/admin/wine{id}", name="admin.wine.edit", methods="GET|POST")
-     * @param Wine $wine
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Wine $wine, Request $request)
@@ -94,7 +88,6 @@ class AdminWineController extends AbstractController
 
     /**
      * @Route("/admin/wine/{id}", name="admin.wine.delete", methods="DELETE")
-     * @param Wine $wine
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function delete(Wine $wine, Request $request)

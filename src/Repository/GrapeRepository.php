@@ -31,9 +31,6 @@ class GrapeRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('g')

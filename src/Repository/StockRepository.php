@@ -32,9 +32,6 @@ class StockRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('s')

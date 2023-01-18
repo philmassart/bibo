@@ -26,31 +26,12 @@ use Twig\Environment;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 class WineController extends AbstractController
 {
-    /**
-     * @var WineRepository
-     */
-    private $repository;
-    private $twig;
-    private $pdf;
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    public function __construct(WineRepository $repository, EntityManagerInterface $em, Environment $twig, Pdf $pdf)
+    public function __construct(private readonly WineRepository $repository, private readonly EntityManagerInterface $em, private readonly Environment $twig, private readonly Pdf $pdf)
     {
-        $this->repository = $repository;
-        $this->twig = $twig;
-        $this->pdf = $pdf;
-        $this->em = $em;
     }
 
     /**
      * @Route("/wines", name="wine.index")
-     * @param PaginatorInterface $paginator
-     * @param Request $request
-     * @param WineSearchRepository $wineSearchRepository
-     * @return Response
      */
     public function index(PaginatorInterface $paginator, Request $request, WineSearchRepository $wineSearchRepository): Response
     {
@@ -99,9 +80,6 @@ class WineController extends AbstractController
     /**
      * @Route("/wines/{slug}-{id}", name="wine.show", requirements={"slug": "[a-z0-9\-]*" })
      *
-     * @param Wine $wine
-     * @param string $slug
-     * @return Response
      *
      * @ParamConverter(
      *     "wine",
@@ -225,6 +203,6 @@ class WineController extends AbstractController
         $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
         $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
         $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
-        return $this->render('wine/stat.html.twig', array('piechart' => $pieChart));
+        return $this->render('wine/stat.html.twig', ['piechart' => $pieChart]);
     }
 }

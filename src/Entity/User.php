@@ -22,17 +22,17 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private ?string $username = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private ?string $password = null;
 
     /**
      * @ORM\OneToMany(targetEntity=Wine::class, mappedBy="user")
      */
-    private $wines;
+    private \Doctrine\Common\Collections\Collection|array $wines;
 
     public function __construct()
     {
@@ -110,11 +110,7 @@ class User implements UserInterface, \Serializable
      */
     public function unserialize($serialized)
     {
-        list(
-            $this->id,
-            $this->username,
-            $this->password
-            ) = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
     /**

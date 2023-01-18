@@ -27,9 +27,7 @@ class AppellationType extends AbstractType
                 'required' => true,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'query_builder' => function (RegionRepository $regionRepository) {
-                    return $regionRepository->myFindAllRegionBuilder();
-                }
+                'query_builder' => fn(RegionRepository $regionRepository) => $regionRepository->myFindAllRegionBuilder()
             ]);
     }
 

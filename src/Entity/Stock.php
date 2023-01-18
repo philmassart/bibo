@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Stock
 {
 
-    const MOVEMENT = [
+    final public const MOVEMENT = [
         'movement.in' => 'movement.in',
         'movement.out' => 'movement.out',
     ];
@@ -24,32 +24,32 @@ class Stock
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private \DateTimeInterface $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Wine", inversedBy="stocks")
      */
-    private $wine;
+    private ?\App\Entity\Wine $wine = null;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantity;
+    private ?int $quantity = null;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $movement = self::MOVEMENT['movement.out'];
+    private string $movement = self::MOVEMENT['movement.out'];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $comment;
+    private ?string $comment = null;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $oldQuantity;
+    private ?int $oldQuantity = null;
 
 
     public function __construct()

@@ -62,9 +62,7 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'class' => 'myfield'
                 ],
-                'query_builder' => function (GrapeRepository $grapeRepository) {
-                    return $grapeRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(GrapeRepository $grapeRepository) => $grapeRepository->myFindAllBuilder()
             ])
             ->add('appellation', EntityType::class, [
                 'required' => false,
@@ -76,12 +74,8 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'class' => 'myfield'
                 ],
-                'query_builder' => function (AppellationRepository $appellation) {
-                    return $appellation->myFindAllAppelBuilder();
-                },
-                'group_by' => function (Appellation $appellation) {
-                    return $appellation->getRegion()->getName();
-                },
+                'query_builder' => fn(AppellationRepository $appellation) => $appellation->myFindAllAppelBuilder(),
+                'group_by' => fn(Appellation $appellation) => $appellation->getRegion()->getName(),
 
             ])
             ->add('color', ChoiceType::class, [
@@ -111,9 +105,7 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'class' => 'myfield'
                 ],
-                'query_builder' => function (FeatureRepository $featureRepository) {
-                    return $featureRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(FeatureRepository $featureRepository) => $featureRepository->myFindAllBuilder()
             ])
             ->add('pairings', EntityType::class, [
                 'required' => false,
@@ -124,9 +116,7 @@ class WineSearchType extends AbstractType
                 'attr' => [
                     'class' => 'myfield'
                 ],
-                'query_builder' => function (PairingRepository $pairingRepository) {
-                    return $pairingRepository->myFindAllBuilder();
-                }
+                'query_builder' => fn(PairingRepository $pairingRepository) => $pairingRepository->myFindAllBuilder()
             ])
             ->add('name', TextType::class, [
                 "required" => false,

@@ -33,9 +33,6 @@ class RegionRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /**
-     * @return QueryBuilder
-     */
     public function myFindAllRegionBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('r')
